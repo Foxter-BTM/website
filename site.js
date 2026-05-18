@@ -1,0 +1,74 @@
+// BTM Carrosserie — Site interactions
+(function () {
+  // ---- Nav toggle (mobile) ----------------------------
+  const nav = document.querySelector('.site-nav');
+  const toggle = document.querySelector('.nav-toggle');
+  if (toggle && nav) {
+    toggle.addEventListener('click', () => {
+      nav.classList.toggle('is-open');
+    });
+  }
+
+  // ---- Reveal on scroll -------------------------------
+  const targets = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && targets.length) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add('is-visible');
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    );
+    targets.forEach((t) => io.observe(t));
+  } else {
+    targets.forEach((t) => t.classList.add('is-visible'));
+  }
+
+  // ---- Contact form (light validation) ----------------
+  const form = document.querySelector('#contact-form');
+  if (form) {
+    const success = document.querySelector('#form-success');
+    form.addEventListener('submit', (ev) => {
+      ev.preventDefault();
+      let ok = true;
+      form.querySelectorAll('[data-required]').forEach((field) => {
+        const wrap = field.closest('.field');
+        const val = (field.value || '').trim();
+        const isEmail = field.type === 'email';
+        const valid =
+          val.length > 0 && (!isEmail || /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(val));
+        if (!valid) {
+          wrap.classList.add('has-err');
+          field.classList.add('invalid');
+          ok = false;
+        } else {
+          wrap.classList.remove('has-err');
+          field.classList.remove('invalid');
+        }
+      });
+      if (!ok) {
+        const firstErr = form.querySelector('.has-err input, .has-err textarea, .has-err select');
+        if (firstErr) firstErr.focus();
+        return;
+      }
+      // Simulate submit
+      form.style.display = 'none';
+      if (success) success.classList.add('shown');
+    });
+
+    // Clear error on input
+    form.querySelectorAll('[data-required]').forEach((field) => {
+      field.addEventListener('input', () => {
+        const wrap = field.closest('.field');
+        if (wrap.classList.contains('has-err')) {
+          wrap.classList.remove('has-err');
+          field.classList.remove('invalid');
+        }
+      });
+    });
+  }
+})();

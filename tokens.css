@@ -1,0 +1,332 @@
+/* =========================================================
+   BTM Carrosserie — Foundations
+   Direction Bauhaus contemporain · Mai 2026
+   Load this before any component CSS.
+
+   Système :
+   - Palette : noir profond + crème + un seul rouge terracotta
+   - Typographie : Archivo (display) + IBM Plex Mono (fonctionnel)
+   - Géométrie : ligne, bloc, cercle. Aucune autre forme.
+   - Grille : 12 colonnes, gouttière 24, marges 96
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap');
+
+:root {
+  /* ---------- Palette — noir, crème, un rouge ---------- */
+
+  /* Primaires */
+  --btm-ink:        #0E0E0C;   /* noir profond, légèrement chaud — primaire */
+  --btm-paper:      #F4EEDD;   /* crème — surface primaire */
+  --btm-terracotta: #B14A2A;   /* rouge terracotta — accent unique */
+
+  /* Secondaires */
+  --btm-ink-2:        #1A1A18;   /* surface ink secondaire */
+  --btm-terracotta-2: #8E3A20;   /* press / hover du rouge */
+  --btm-signal:       #C7361F;   /* alternate documenté — collections capsule, communication estivale */
+
+  /* Neutres chauds (échelle papier) */
+  --btm-paper-lite: #F8F3E5;   /* crème allégée — cartes */
+  --btm-bone:       #EFE9D9;   /* off-white secondaire */
+  --btm-sand:       #E6DFCD;   /* sable chaud — hero blocks */
+  --btm-rule:       #C8C2B3;   /* hairline sur crème */
+  --btm-ash:        #9A9484;   /* hairline forte */
+
+  /* Encres secondaires (échelle texte) */
+  --btm-graphite:   #3A3A36;   /* corps secondaire */
+  --btm-stone:      #6E6D66;   /* méta, mention légale */
+
+  /* Hairline sur ink */
+  --btm-rule-inv:   #2A2A26;
+
+  /* ---------- Sémantique ---------- */
+  --bg:            var(--btm-paper);
+  --bg-alt:        var(--btm-bone);
+  --bg-card:       var(--btm-paper-lite);
+  --bg-inverse:    var(--btm-ink);
+
+  --fg:            var(--btm-ink);
+  --fg-muted:      var(--btm-graphite);
+  --fg-meta:       var(--btm-stone);
+  --fg-inverse:    var(--btm-paper);
+
+  --accent:        var(--btm-terracotta);
+  --accent-press:  var(--btm-terracotta-2);
+
+  --rule:          var(--btm-rule);
+  --rule-strong:   var(--btm-ash);
+  --rule-inverse:  var(--btm-rule-inv);
+
+  /* ---------- Typographie — deux familles seulement ---------- */
+  --font-display:  'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  --font-mono:     'IBM Plex Mono', ui-monospace, Menlo, monospace;
+  /* Note : pas de --font-sans. Le mono porte aussi le corps. */
+
+  /* Échelle (éditoriale, retenue) */
+  --fs-mega:   clamp(72px, 10vw, 176px);
+  --fs-h1:     clamp(48px, 6vw, 96px);
+  --fs-h2:     clamp(32px, 4vw, 56px);
+  --fs-h3:     28px;
+  --fs-h4:     20px;
+  --fs-body:   14px;
+  --fs-small:  12px;
+  --fs-micro:  10px;
+
+  --lh-tight:    0.85;
+  --lh-display:  0.95;
+  --lh-heading:  1.1;
+  --lh-body:     1.55;
+  --lh-loose:    1.7;
+
+  /* Tracking */
+  --trk-tight:   -0.02em;   /* display */
+  --trk-display: -0.015em;
+  --trk-normal:  0;
+  --trk-label:   0.14em;
+  --trk-wide:    0.18em;    /* étiquettes, eyebrows */
+  --trk-logo:    0.22em;    /* lockup wordmark espacé */
+
+  /* ---------- Espacement (8 pt + demi-pas 4 pt) ---------- */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 24px;
+  --s-6: 32px;
+  --s-7: 48px;
+  --s-8: 64px;
+  --s-9: 96px;
+  --s-10: 128px;
+  --s-11: 160px;
+
+  /* ---------- Grille — 12 colonnes ---------- */
+  --grid-cols: 12;
+  --grid-gutter: 24px;
+  --grid-margin: 96px;
+  --grid-max: 1248px;
+
+  /* ---------- Filets — pas d'ombres décoratives ---------- */
+  --hairline:        1px solid var(--rule);
+  --hairline-strong: 1px solid var(--rule-strong);
+  --hairline-ink:    1px solid var(--btm-ink);
+  --hairline-paper:  1px solid var(--btm-paper);
+  --rule-thick:      2px solid var(--btm-ink);
+  --rule-red:        2px solid var(--btm-terracotta);
+
+  /* ---------- Rayons — toujours nets ---------- */
+  --radius-0: 0;   /* défaut absolu */
+  --radius-1: 2px; /* inputs uniquement */
+  /* Pas de pills. Pas de cartes 12px. Le système est carré. */
+
+  /* ---------- Ombres — usage minimal ---------- */
+  --shadow-paper: 0 1px 0 rgba(14,14,12,0.05), 0 8px 24px rgba(14,14,12,0.05);
+  --shadow-lift:  0 24px 64px -32px rgba(14,14,12,0.35);
+
+  /* ---------- Motion — confiant, sans rebond ---------- */
+  --ease-out: cubic-bezier(.22,.61,.36,1);
+  --ease-in:  cubic-bezier(.55,.06,.68,.19);
+  --dur-fast: 140ms;
+  --dur-med:  260ms;
+  --dur-slow: 480ms;
+}
+
+/* =========================================================
+   Reset léger + défauts éléments
+   ========================================================= */
+*, *::before, *::after { box-sizing: border-box; }
+html, body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-mono);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  margin: 0;
+  padding: 0;
+}
+
+/* =========================================================
+   Type primitives
+   ========================================================= */
+.btm-mega, .btm-display-mega {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: var(--fs-mega);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--trk-tight);
+  color: var(--fg);
+  margin: 0;
+}
+
+.btm-h1, h1 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: var(--fs-h1);
+  line-height: var(--lh-display);
+  letter-spacing: var(--trk-tight);
+  color: var(--fg);
+  margin: 0;
+}
+
+.btm-h2, h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--fs-h2);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--trk-display);
+  color: var(--fg);
+  margin: 0;
+}
+
+.btm-h3, h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-h3);
+  line-height: var(--lh-heading);
+  letter-spacing: var(--trk-display);
+  color: var(--fg);
+  margin: 0;
+}
+
+.btm-h4, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--fs-h4);
+  line-height: var(--lh-heading);
+  letter-spacing: 0;
+  color: var(--fg);
+  margin: 0;
+}
+
+.btm-body, p {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--fg);
+  margin: 0;
+}
+
+.btm-lead {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--fg-muted);
+  max-width: 56ch;
+}
+
+.btm-small, small {
+  font-family: var(--font-mono);
+  font-size: var(--fs-small);
+  line-height: var(--lh-body);
+  color: var(--fg-meta);
+}
+
+/* Étiquette mono UPPERCASE — la voix "atelier" */
+.btm-label, .btm-eyebrow, .eyebrow {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: var(--fs-micro);
+  letter-spacing: var(--trk-wide);
+  text-transform: uppercase;
+  color: var(--fg-meta);
+}
+.btm-label--accent { color: var(--accent); }
+.btm-label--ink    { color: var(--fg); }
+
+/* Wordmark BTM — usage logo uniquement */
+.btm-wordmark {
+  font-family: var(--font-display);
+  font-weight: 900;
+  letter-spacing: var(--trk-tight);
+  line-height: var(--lh-tight);
+  color: var(--fg);
+}
+/* Variante espacée — pour lockups secondaires */
+.btm-wordmark--spaced {
+  letter-spacing: var(--trk-logo);
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   Géométrie primitive — les trois seules formes autorisées
+   ========================================================= */
+.btm-rule {
+  height: 1px;
+  background: var(--btm-ink);
+  border: 0;
+  margin: 0;
+}
+.btm-rule--thick { height: 2px; }
+.btm-rule--red   { background: var(--accent); }
+.btm-rule--paper { background: var(--btm-paper); }
+
+.btm-block {
+  display: inline-block;
+  background: var(--accent);
+  width: 64px;
+  height: 64px;
+}
+.btm-block--ink  { background: var(--btm-ink); }
+
+.btm-dot {
+  display: inline-block;
+  background: var(--accent);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+.btm-circle {
+  display: inline-block;
+  background: var(--accent);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+/* =========================================================
+   Grille utilitaire — 12 colonnes
+   ========================================================= */
+.btm-container {
+  width: 100%;
+  max-width: var(--grid-max);
+  margin: 0 auto;
+  padding: 0 var(--s-7);
+}
+.btm-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-cols), 1fr);
+  gap: var(--grid-gutter);
+}
+
+/* =========================================================
+   Méta-row (séparateur de section au numéro rouge)
+   ========================================================= */
+.btm-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--trk-wide);
+  text-transform: uppercase;
+  color: var(--fg-meta);
+  padding-bottom: var(--s-4);
+  border-bottom: 1px solid currentColor;
+}
+.btm-meta-row .btm-num { color: var(--accent); }
+
+/* =========================================================
+   Surfaces sombres — inverser méta-row / labels
+   ========================================================= */
+.btm-on-ink {
+  background: var(--btm-ink);
+  color: var(--btm-paper);
+}
+.btm-on-ink .btm-label,
+.btm-on-ink .eyebrow { color: var(--btm-paper); opacity: 0.8; }
+.btm-on-ink .btm-rule { background: var(--btm-paper); }
+.btm-on-ink h1, .btm-on-ink h2, .btm-on-ink h3, .btm-on-ink h4 { color: var(--btm-paper); }
