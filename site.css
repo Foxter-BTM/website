@@ -1116,3 +1116,59 @@ footer.site-foot .bottom .legal {
   height: 2px; background: var(--btm-ink); width: 64px;
   margin: var(--s-4) 0;
 }
+
+/* =========================================================
+   FLAGS ÉDITORIAUX — visibles uniquement avec ?btm-edit
+   ========================================================= */
+body.btm-edit-mode .btm-flag {
+  position: relative;
+  outline: 2px dashed #E63946;
+  outline-offset: 4px;
+  cursor: pointer;
+}
+body.btm-edit-mode .btm-flag::before {
+  content: attr(data-flag);
+  position: absolute;
+  top: -26px;
+  left: 0;
+  background: #E63946;
+  color: #fff;
+  font-family: ui-monospace, monospace;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  white-space: nowrap;
+  z-index: 9999;
+  pointer-events: none;
+}
+body.btm-edit-mode .btm-flag--warn {
+  outline-color: #F4A261;
+}
+body.btm-edit-mode .btm-flag--warn::before {
+  background: #F4A261;
+  color: #0E0E0C;
+}
+body.btm-edit-mode .btm-flag--ok {
+  outline-color: #2A9D8F;
+}
+
+/* Bandeau d'activation en haut de page */
+body.btm-edit-mode::before {
+  content: "⚑  MODE ÉDITION BTM — éléments à valider en rouge · à confirmer en orange";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99999;
+  background: #E63946;
+  color: #fff;
+  font-family: ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-align: center;
+  padding: 6px 16px;
+  pointer-events: none;
+}

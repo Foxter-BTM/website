@@ -1,5 +1,10 @@
 // BTM Carrosserie — Site interactions
 (function () {
+  // ---- Mode édition (?btm-edit dans l'URL) ----------------
+  if (window.location.search.includes('btm-edit')) {
+    document.body.classList.add('btm-edit-mode');
+  }
+
   // ---- Nav toggle (mobile) ----------------------------
   const nav = document.querySelector('.site-nav');
   const toggle = document.querySelector('.nav-toggle');
