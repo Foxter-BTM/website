@@ -34,13 +34,7 @@
   "serviceType": "Carrosserie automobile",
   "provider": {
     "@type": "AutoRepair",
-    "name": "BTM Carrosserie",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Anglet",
-      "postalCode": "64600",
-      "addressCountry": "FR"
-    }
+    "name": "BTM Carrosserie"
   },
   "areaServed": ["Bayonne", "Biarritz", "Anglet", "Pays Basque"],
   "hasOfferCatalog": {
@@ -84,6 +78,10 @@
     </button>
   </div>
 </header>
+
+<div class="preopen-banner" role="note">
+  <strong>Ouverture prévue début 2027</strong> · Ce site présente notre futur atelier.
+</div>
 
 <main id="main">
 
@@ -287,7 +285,7 @@
 
         <div class="advantage" style="background: var(--btm-ink-2); color: var(--btm-paper);">
           <b style="color: var(--accent);">Liberté de choix garantie</b>
-          <span style="color: var(--btm-bone);">L'article L211-5-1 du Code des assurances vous garantit la liberté de choisir votre carrossier. Votre assureur peut recommander, il ne peut pas imposer. BTM est en cours de référencement chez MAIF, Groupama, AXA, MACIF, MATMUT, Allianz — et travaille avec tous les autres.</span>
+          <span style="color: var(--btm-bone);">L'article L211-5-1 du Code des assurances vous garantit la liberté de choisir votre carrossier. Votre assureur peut recommander un réparateur agréé, il ne peut pas vous l'imposer. BTM n'est pas un réparateur agréé d'un réseau — vous restez libre de nous confier votre dossier, quelle que soit votre compagnie.</span>
         </div>
 
         <a href="../assureurs/" class="footer-link" style="color: var(--accent); border-color: var(--accent);">Détail du parcours sinistre <span>→</span></a>
@@ -301,7 +299,7 @@
   <div class="wrap">
     <div class="meta-row reveal">
       <span><span class="num">06 /</span> Prochaine étape</span>
-      <span class="right">Devis détaillé sous 48 h</span>
+      <span class="right">Réponse sous 24 à 48 h</span>
     </div>
 
     <div style="height: 48px;"></div>
@@ -311,10 +309,10 @@
         <h2>Un dossier,<br/>un binôme.<br/>Pas de file d'attente.</h2>
       </div>
       <div class="reveal d1">
-        <p class="lead">Décrivez-nous votre besoin avec deux ou trois photos. Nous revenons sous 24 heures avec un premier avis. Aucun engagement avant le devis détaillé.</p>
+        <p class="lead">Décrivez-nous votre besoin avec deux ou trois photos. La prise de devis ouvrira avec l'atelier, début 2027. En attendant, posez-nous votre question.</p>
         <div class="actions">
-          <a href="../contact/" class="btn">Demander un devis <span class="arrow">→</span></a>
-          <a href="tel:+33559000000" class="btn btn--ghost">+33 5 59 00 00 00</a>
+          <span class="btn btn--disabled" aria-disabled="true">Demande de devis — indisponible pour le moment</span>
+          <a href="../contact/" class="btn btn--ghost">Poser une question <span class="arrow">→</span></a>
         </div>
       </div>
     </div>
@@ -335,13 +333,11 @@
         <h4>Atelier</h4>
         <p>
           <b>BTM Carrosserie</b><br/>
-          <!-- TODO: remplacer par adresse définitive -->
-          Chemin de l'Industrie<br/>
-          64600 Anglet<br/>
+          Secteur Bayonne · Biarritz · Anglet<br/>
           Pays Basque · France
         </p>
         <p style="margin-top: 16px;">
-          <a href="tel:+33559000000">+33 5 59 00 00 00</a><br/>
+          +33 00 00 00 00 00 (ligne active à l'ouverture)<br/>
           <a href="mailto:contact@btm-carrosserie.fr">contact@btm-carrosserie.fr</a>
         </p>
       </div>
@@ -389,5 +385,20 @@
 </footer>
 
 <script src="../site.js"></script>
+
+<!-- =====================================================
+     MODAL PRÉ-OUVERTURE
+====================================================== -->
+<div id="preopen-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-box">
+    <div class="modal-eyebrow">Atelier en cours de création</div>
+    <h2 id="modal-title">BTM Carrosserie<br/>ouvre début 2027</h2>
+    <p>Notre atelier de carrosserie indépendant ouvrira ses portes au Pays Basque début 2027. Ce site présente notre futur atelier. Laissez-nous vos coordonnées pour être informé(e) de l'ouverture — et recontacté(e) en priorité.</p>
+    <div class="modal-actions">
+      <a href="../contact/" class="btn modal-contact">Être informé de l'ouverture <span class="arrow">→</span></a>
+      <button class="btn btn--ghost modal-close">Découvrir le site</button>
+    </div>
+  </div>
+</div>
 </body>
 </html>

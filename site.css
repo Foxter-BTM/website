@@ -1172,3 +1172,78 @@ body.btm-edit-mode::before {
   padding: 6px 16px;
   pointer-events: none;
 }
+
+/* ----- Bandeau pré-ouverture -------------------------------- */
+.preopen-banner {
+  background: var(--btm-ink);
+  color: var(--btm-bone);
+  padding: 10px var(--s-7);
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--trk-wide);
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--btm-rule-inv);
+  position: relative;
+  z-index: 49;
+}
+.preopen-banner strong { color: var(--accent); }
+@media (max-width: 720px) {
+  .preopen-banner { padding: 10px var(--s-5); }
+}
+
+/* ----- Modal pré-ouverture --------------------------------- */
+#preopen-modal {
+  display: none;
+  position: fixed; inset: 0; z-index: 9000;
+  background: rgba(14,14,12,0.72);
+  align-items: center; justify-content: center;
+  padding: var(--s-5);
+}
+#preopen-modal.is-open { display: flex; }
+#preopen-modal .modal-box {
+  background: var(--btm-paper);
+  border: 1px solid var(--btm-ink);
+  max-width: 540px; width: 100%;
+  padding: var(--s-8) var(--s-7);
+  display: grid; gap: var(--s-5);
+}
+#preopen-modal .modal-eyebrow {
+  font-family: var(--font-mono); font-size: var(--fs-micro);
+  letter-spacing: var(--trk-wide); text-transform: uppercase;
+  color: var(--accent);
+}
+#preopen-modal h2 {
+  font-family: var(--font-display); font-weight: 900;
+  font-size: clamp(28px, 4vw, 40px); line-height: 1.05;
+  letter-spacing: -0.015em; margin: 0;
+}
+#preopen-modal p {
+  font-family: var(--font-mono); font-size: 14px; line-height: 1.75;
+  color: var(--btm-graphite); max-width: 52ch;
+}
+#preopen-modal .modal-actions {
+  display: flex; gap: var(--s-4); flex-wrap: wrap;
+  margin-top: var(--s-3);
+}
+@media (max-width: 520px) {
+  #preopen-modal .modal-box { padding: var(--s-6) var(--s-5); }
+  #preopen-modal .modal-actions { flex-direction: column; }
+}
+
+/* ----- Bouton désactivé (pré-ouverture) --------------------- */
+.btn--disabled,
+.btn[disabled] {
+  background: var(--btm-rule);
+  border-color: var(--btm-rule);
+  color: var(--btm-stone);
+  cursor: not-allowed;
+  opacity: 0.7;
+  pointer-events: none;
+}
+.cta-band .btn--disabled,
+.cta-band .btn[disabled] {
+  background: rgba(244,238,221,0.3);
+  border-color: rgba(244,238,221,0.3);
+  color: rgba(244,238,221,0.5);
+}

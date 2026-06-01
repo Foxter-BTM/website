@@ -76,4 +76,24 @@
       });
     });
   }
+
+  // ---- Modal pré-ouverture (une fois par session) ----------
+  const modal = document.querySelector('#preopen-modal');
+  if (modal && !sessionStorage.getItem('btm-modal-seen')) {
+    modal.classList.add('is-open');
+    modal.querySelector('.modal-close')?.addEventListener('click', () => {
+      modal.classList.remove('is-open');
+      sessionStorage.setItem('btm-modal-seen', '1');
+    });
+    modal.querySelector('.modal-contact')?.addEventListener('click', () => {
+      modal.classList.remove('is-open');
+      sessionStorage.setItem('btm-modal-seen', '1');
+    });
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.remove('is-open');
+        sessionStorage.setItem('btm-modal-seen', '1');
+      }
+    });
+  }
 })();
