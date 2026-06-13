@@ -3,7 +3,9 @@
    Layer above tokens.css
    ========================================================= */
 
-html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
 body { background: var(--btm-paper); color: var(--btm-ink); overflow-x: hidden; }
 img { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; }
@@ -1092,17 +1094,66 @@ footer.site-foot .bottom .legal {
   color: var(--btm-graphite);
 }
 
-/* ----- Reveal animation ------------------------------- */
-.reveal {
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+/* =========================================================
+   MOTION — révélation au scroll
+   Priorité : CSS scroll-driven. Fallback : IntersectionObserver (site.js).
+   Sans JS et sans scroll-driven : contenu toujours visible.
+   prefers-reduced-motion coupe tout mouvement.
+   ========================================================= */
+.reveal { opacity: 1; }
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Fallback IO : masquage initial seulement si JS a posé .js-reveal sur <html> */
+  .js-reveal .reveal {
+    opacity: 0;
+    transform: translateY(var(--reveal-distance));
+    transition: opacity var(--reveal-dur) var(--ease-out),
+                transform var(--reveal-dur) var(--ease-out);
+  }
+  .js-reveal .reveal.is-visible { opacity: 1; transform: none; }
+  .js-reveal .reveal.d1 { transition-delay: 90ms; }
+  .js-reveal .reveal.d2 { transition-delay: 180ms; }
+  .js-reveal .reveal.d3 { transition-delay: 270ms; }
+  .js-reveal .reveal.d4 { transition-delay: 360ms; }
+
+  /* Scroll-driven natif : prend le dessus quand supporté */
+  @supports (animation-timeline: view()) {
+    .reveal, .js-reveal .reveal {
+      opacity: 1; transform: none; transition: none;
+      animation: btm-reveal both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 45%;
+    }
+    @keyframes btm-reveal {
+      from { opacity: 0; transform: translateY(var(--reveal-distance)); }
+      to   { opacity: 1; transform: none; }
+    }
+    /* Parallaxe léger — blocs géométriques décoratifs uniquement */
+    .parallax {
+      animation: btm-parallax linear both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 100%;
+    }
+    @keyframes btm-parallax {
+      from { transform: translateY(32px); }
+      to   { transform: translateY(-32px); }
+    }
+  }
+
+  /* Séquence d'entrée hero — cascade au chargement (page d'accueil) */
+  .hero .seq {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: btm-enter 700ms var(--ease-out) forwards;
+  }
+  .hero .seq-1 { animation-delay: 80ms; }
+  .hero .seq-2 { animation-delay: 220ms; }
+  .hero .seq-3 { animation-delay: 360ms; }
+  .hero .seq-4 { animation-delay: 500ms; }
+  @keyframes btm-enter {
+    to { opacity: 1; transform: none; }
+  }
 }
-.reveal.is-visible { opacity: 1; transform: translateY(0); }
-.reveal.d1 { transition-delay: 80ms; }
-.reveal.d2 { transition-delay: 160ms; }
-.reveal.d3 { transition-delay: 240ms; }
-.reveal.d4 { transition-delay: 320ms; }
 
 /* ----- Misc utilities --------------------------------- */
 .eyebrow {
