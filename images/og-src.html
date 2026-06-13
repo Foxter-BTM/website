@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<style>
+  @font-face {
+    font-family: 'Archivo';
+    src: url('/fonts/archivo-vf.woff2') format('woff2-variations');
+    font-weight: 100 900; font-style: normal;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 630px; }
+  body {
+    background: #F4EEDD;
+    font-family: 'Archivo', sans-serif;
+    color: #0E0E0C;
+    padding: 72px 80px;
+    display: flex; flex-direction: column; justify-content: space-between;
+    position: relative; overflow: hidden;
+  }
+  .meta {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: 18px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;
+    color: #6E6D66;
+    border-bottom: 1px solid #0E0E0C; padding-bottom: 20px;
+  }
+  .meta .num { color: #B14A2A; }
+  .wordmark {
+    font-weight: 900; font-size: 300px; line-height: 0.8;
+    letter-spacing: -0.03em;
+  }
+  .wordmark .m { color: #B14A2A; }
+  .foot {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    font-size: 22px; font-weight: 500; letter-spacing: 0.04em;
+  }
+  .foot .tag { text-transform: uppercase; letter-spacing: 0.14em; color: #3A3A36; }
+  .foot .date { color: #6E6D66; font-size: 18px; letter-spacing: 0.14em; text-transform: uppercase; }
+  .block {
+    position: absolute; top: 150px; right: 80px;
+    width: 96px; height: 96px; background: #0E0E0C;
+  }
+</style>
+</head>
+<body>
+  <div class="meta">
+    <span><span class="num">01 /</span> Carrosserie indépendante</span>
+    <span>Pays Basque</span>
+  </div>
+  <div class="wordmark">BT<span class="m">M</span></div>
+  <div class="foot">
+    <span class="tag">Tôlerie · Peinture · Réparation sinistre</span>
+    <span class="date">Bayonne · Biarritz · Anglet — début 2027</span>
+  </div>
+</body>
+</html>

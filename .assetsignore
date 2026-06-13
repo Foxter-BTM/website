@@ -9,3 +9,4 @@ CLAUDE.md
 .gitignore
 .assetsignore
 wrangler.toml
+images/og-src.html
