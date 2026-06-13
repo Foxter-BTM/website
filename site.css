@@ -607,7 +607,8 @@ footer.site-foot .cols {
   display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: var(--s-6);
   border-top: 1px solid var(--btm-rule-inv); padding-top: var(--s-7);
 }
-footer.site-foot .col h4 {
+footer.site-foot .col h4,
+footer.site-foot .col .col-head {
   font-family: var(--font-mono); font-weight: 500; font-size: var(--fs-micro);
   letter-spacing: var(--trk-wide); text-transform: uppercase;
   color: var(--accent); margin-bottom: var(--s-4);
@@ -1339,10 +1340,15 @@ footer.site-foot .bottom .legal {
 .note-block { margin-top: var(--s-5); max-width: 64ch; }
 .answer-lead { color: var(--btm-ink); }
 
-/* Accessibilité — accent éclairci sur fonds noirs (contraste AA 4.5:1) */
+/* Accessibilité — sur fonds noirs : accent éclairci + méta éclaircie (AA 4.5:1).
+   --fg-meta = var(--btm-stone), donc redéfinir stone propage à toute la méta. */
 .band.on-ink,
 .contact-layout .info-side,
-footer.site-foot { --accent: var(--accent-on-ink); }
+footer.site-foot,
+.preopen-banner {
+  --accent: var(--accent-on-ink);
+  --btm-stone: #9A9484;
+}
 
 /* Accessibilité — focus clavier visible (global) */
 :focus-visible {
