@@ -239,3 +239,60 @@ remplacer par des données inventées :
 - Tout ce qui touche aux informations des fondateurs au-delà de la correction
   du nom
 
+---
+
+## 11. Système de design — refonte visuelle (juin 2026)
+
+Refonte appliquée sur les 5 pages. Décisions actées (réf. `docs/superpowers/specs/2026-06-12-refonte-visuelle-design.md`) :
+
+### Stack
+- HTML/CSS/JS statique pur, **pas de build**. Déploiement Railway/Cloudflare inchangé.
+- **Nav et footer sont dupliqués à la main dans les 5 fichiers HTML.** Toute
+  modification de la nav ou du footer doit être répercutée sur les 5 pages.
+
+### Typographie
+- **Archivo Variable, famille unique**, self-hostée dans `fonts/archivo-vf.woff2`
+  (+ `-italic`). `@font-face` dans `tokens.css`, `preload` dans chaque `<head>`.
+  **Plus de Google Fonts ni d'IBM Plex Mono.**
+- `--font-mono` est conservé comme **alias** de `--font-display` (compat site.css) —
+  ne pas le repointer vers une police mono.
+- Corps à **16 px** (`--fs-body`), small 13, micro 11. Échelle display inchangée.
+- La « voix atelier » des labels = uppercase + `--trk-wide` + graisse 500 (plus le mono).
+
+### Couleur
+- Accent terracotta **`#B14A2A`** confirmé (pas `#c0392b`). Un élément signature par
+  écran (mot du H1, ou bloc géométrique, ou premier jalon de timeline).
+- **`--accent-on-ink` (`#C9583B`)** : accent éclairci pour le texte sur fond noir
+  (le terracotta n'atteint que 3.57:1 sur l'encre). Appliqué via redéfinition locale
+  de `--accent` sur `.band.on-ink`, `.info-side`, `.site-foot`, `.preopen-banner`.
+  Ces mêmes scopes redéfinissent `--btm-stone` (#9A9484) pour la méta sur fond noir.
+- `--btm-stone` foncé à `#646359` (AA 5.2:1 sur crème).
+
+### Motion
+- Révélation au scroll : **CSS scroll-driven** (`animation-timeline: view()`) en
+  priorité, **fallback IntersectionObserver** (site.js pose `.js-reveal` sur `<html>`
+  seulement si scroll-driven non supporté). Sans JS : contenu visible.
+- Hero accueil : séquence d'entrée `.seq`/`.seq-1..4` au chargement.
+- Parallaxe : classe `.parallax` (blocs géométriques décoratifs uniquement).
+- **Tout le motion est sous `@media (prefers-reduced-motion: no-preference)`** —
+  reduced-motion désactive tout, contenu intact.
+
+### Conventions
+- Élément signature récurrent = la « plaque » `.meta-row` numérotée (numéro accent +
+  hairline) ouvrant chaque section.
+- Portraits fondateurs = monogrammes géométriques `.portrait--mono` (TD cercle /
+  GB bloc), `role="img"` + `aria-label`. Placeholders photo respectés (TODO conservés).
+- Trois formes seulement : ligne, bloc, cercle. Pas d'ombres décoratives, rayons nets.
+- **Aucun style inline** dans les HTML — tout passe par des classes site.css.
+- OG image générée par capture de `images/og-src.html` (exclu du déploiement via
+  `.assetsignore`) → `images/og-btm.png` (1200×630).
+
+### SEO / qualité
+- Schema : `AutoBodyShop` sur accueil/services/contact ; `FAQPage` (assureurs),
+  `AboutPage` (a-propos). **Jamais d'`address` dans le schema** tant que le local
+  n'est pas signé — uniquement `areaServed`.
+- Lighthouse (juin 2026) : perf 100, a11y 96-100, best 100, SEO 100 sur les 5 pages,
+  mobile et desktop.
+- Vérifs de non-régression : `grep` formulations interdites, « début 2027 » unique,
+  pas de `googleapis`, pas d'`address` schema, placeholders téléphone/adresse intacts.
+
