@@ -262,15 +262,27 @@ section.band.on-ink p { color: var(--btm-bone); }
   font-family: var(--font-mono); font-size: 16px; line-height: 1.7;
   color: var(--btm-graphite);
 }
+.page-head__eyebrow { margin-top: var(--s-7); }
 .page-head .crumbs {
-  margin-top: var(--s-6);
-  display: flex; gap: 8px; align-items: baseline;
+  margin-top: var(--s-7);
+  display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: baseline;
   font-family: var(--font-mono); font-size: var(--fs-micro);
   letter-spacing: var(--trk-wide); text-transform: uppercase;
   color: var(--btm-stone);
+  border-top: 1px solid var(--btm-ink);
+  border-bottom: 1px solid var(--btm-ink);
+  padding: var(--s-4) 0;
 }
-.page-head .crumbs a:hover { color: var(--btm-ink); }
-.page-head .crumbs .sep { color: var(--accent); }
+.page-head .crumbs a {
+  border-bottom: 0;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+.page-head .crumbs a:hover { color: var(--accent); }
+.page-head .crumbs .sep { color: var(--btm-rule); }
+@media (max-width: 560px) {
+  .page-head .crumbs { flex-direction: column; gap: 10px; }
+  .page-head .crumbs .sep { display: none; }
+}
 
 /* ----- Section title block ----------------------------- */
 .section-head { margin-bottom: var(--s-7); }
@@ -717,6 +729,53 @@ footer.site-foot .bottom .legal {
   .service-detail { grid-template-columns: 1fr; gap: var(--s-5); }
   .service-detail .left .num { font-size: 64px; }
 }
+
+/* Section assureur sur fond noir — cascade (remplace les overrides inline) */
+.band.on-ink .service-detail { border-top-color: var(--btm-rule-inv); }
+.band.on-ink .service-detail .left h2,
+.band.on-ink .service-detail .right h3,
+.band.on-ink .service-detail .right .feature-list li b { color: var(--btm-paper); }
+.band.on-ink .service-detail .left .label { color: var(--btm-bone); }
+.band.on-ink .service-detail .right .lead,
+.band.on-ink .service-detail .right p,
+.band.on-ink .service-detail .right .feature-list li { color: var(--btm-bone); }
+.band.on-ink .service-detail .right .feature-list,
+.band.on-ink .service-detail .right .feature-list li { border-color: var(--btm-rule-inv); }
+.band.on-ink .service-detail .right .advantage {
+  background: var(--btm-ink-2); color: var(--btm-paper);
+}
+.band.on-ink .service-detail .right .advantage span { color: var(--btm-bone); }
+.band.on-ink .service-detail .right .footer-link {
+  color: var(--accent); border-color: var(--accent);
+}
+
+/* Composition alternée + numéro géant décoratif (page Services) */
+.service-detail { position: relative; }
+.service-detail .left { position: relative; z-index: 1; }
+.service-detail--mirror { grid-template-columns: 2fr 1fr; }
+.service-detail--mirror .left { order: 2; }
+.service-detail--mirror .right { order: 1; }
+.service-detail--mirror .ghost-num { right: auto; left: 0; }
+.service-detail .ghost-num {
+  position: absolute; top: -0.18em; right: 0; z-index: 0;
+  font-family: var(--font-display); font-weight: 200;
+  font-size: clamp(120px, 22vw, 320px); line-height: 0.8;
+  letter-spacing: -0.04em;
+  color: var(--btm-sand);
+  pointer-events: none; user-select: none;
+}
+.band.lite .service-detail .ghost-num { color: var(--btm-bone); }
+.band.sand .service-detail .ghost-num { color: var(--btm-bone); }
+.band.on-ink .service-detail .ghost-num { color: var(--btm-ink-2); }
+@media (max-width: 880px) {
+  .service-detail--mirror { grid-template-columns: 1fr; }
+  .service-detail--mirror .left { order: 0; }
+  .service-detail--mirror .right { order: 0; }
+  .service-detail .ghost-num { font-size: clamp(100px, 30vw, 180px); }
+}
+
+/* Ancres — décalage sous le sommaire collant */
+:target { scroll-margin-top: 96px; }
 
 /* ----- Flow (assureurs page) -------------------------- */
 .flow {
