@@ -778,49 +778,56 @@ footer.site-foot .bottom .legal {
 :target { scroll-margin-top: 96px; }
 
 /* ----- Flow (assureurs page) -------------------------- */
+/* Timeline verticale constructiviste — ligne continue + jalons circulaires */
 .flow {
-  display: grid; grid-template-columns: repeat(4, 1fr);
-  gap: 0; border-top: 2px solid var(--btm-ink);
+  position: relative;
+  padding-left: var(--s-7);
+  margin-top: var(--s-5);
+}
+.flow::before {
+  content: ""; position: absolute;
+  left: 5px; top: 8px; bottom: 8px; width: 1px;
+  background: var(--btm-ink);
 }
 .flow .step {
-  padding: var(--s-6) var(--s-4);
-  border-right: 1px solid var(--btm-ink);
-  background: var(--btm-paper);
   position: relative;
+  padding: 0 0 var(--s-7) var(--s-6);
 }
-.flow .step:last-child { border-right: 0; }
+.flow .step:last-child { padding-bottom: 0; }
+.flow .step::before {
+  content: ""; position: absolute;
+  left: -22px; top: 4px;
+  width: 11px; height: 11px; border-radius: 50%;
+  background: var(--btm-paper);
+  border: 1px solid var(--btm-ink);
+}
+/* Premier jalon — unique accent rouge de l'écran (signature) */
+.flow .step:first-child::before { background: var(--accent); border-color: var(--accent); }
 .flow .step .num {
   font-family: var(--font-mono); font-size: var(--fs-micro);
-  letter-spacing: var(--trk-wide); color: var(--accent);
-  margin-bottom: var(--s-4);
+  letter-spacing: var(--trk-wide); text-transform: uppercase;
+  color: var(--btm-stone);
+  margin-bottom: var(--s-3);
 }
 .flow .step h3 {
   font-family: var(--font-display); font-weight: 800;
-  font-size: 24px; letter-spacing: -0.01em; line-height: 1.1;
-  margin-bottom: var(--s-3); max-width: 14ch;
+  font-size: clamp(24px, 2.6vw, 34px); letter-spacing: -0.015em; line-height: 1.05;
+  margin-bottom: var(--s-3); max-width: 18ch;
 }
 .flow .step p {
-  font-family: var(--font-mono); font-size: 12px; line-height: 1.65;
-  color: var(--btm-graphite);
+  font-family: var(--font-mono); font-size: 14px; line-height: 1.7;
+  color: var(--btm-graphite); max-width: 60ch;
 }
 .flow .step .duration {
   margin-top: var(--s-4);
   font-family: var(--font-mono); font-size: var(--fs-micro);
   letter-spacing: var(--trk-wide); text-transform: uppercase;
   color: var(--btm-stone);
-  padding-top: var(--s-3);
+  display: inline-block;
+  padding-top: var(--s-2);
   border-top: 1px solid var(--btm-rule);
 }
 .flow .step .duration b { color: var(--btm-ink); font-weight: 500; }
-@media (max-width: 880px) {
-  .flow { grid-template-columns: 1fr 1fr; }
-  .flow .step:nth-child(2n) { border-right: 0; }
-  .flow .step:nth-child(-n+2) { border-bottom: 1px solid var(--btm-ink); }
-}
-@media (max-width: 520px) {
-  .flow { grid-template-columns: 1fr; }
-  .flow .step { border-right: 0; border-bottom: 1px solid var(--btm-ink); }
-}
 
 /* ----- FAQ -------------------------------------------- */
 .faq {
@@ -1280,6 +1287,23 @@ footer.site-foot .bottom .legal {
 /* Footer — colonnes à fond perdu */
 .cols--flush { padding-left: 0; padding-right: 0; }
 .col-stack { margin-top: var(--s-4); }
+
+/* Assureurs — split client / BTM (fond noir) */
+.split-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-8);
+  border-top: 1px solid var(--btm-rule-inv); padding-top: var(--s-7);
+}
+@media (max-width: 720px) { .split-grid { grid-template-columns: 1fr; gap: var(--s-6); } }
+.eyebrow--accent { color: var(--accent); margin-bottom: var(--s-4); }
+
+/* Cascade feature-list sur fond noir (hors service-detail) */
+.band.on-ink .feature-list,
+.band.on-ink .feature-list li { border-color: var(--btm-rule-inv); color: var(--btm-bone); }
+.band.on-ink .feature-list li b { color: var(--btm-paper); }
+
+/* Assureurs — note légale et chapô de réponse FAQ */
+.note-block { margin-top: var(--s-5); max-width: 64ch; }
+.answer-lead { color: var(--btm-ink); }
 
 /* =========================================================
    FLAGS ÉDITORIAUX — visibles uniquement avec ?btm-edit
