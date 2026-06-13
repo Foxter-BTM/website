@@ -578,7 +578,7 @@ section.band.on-ink p { color: var(--btm-bone); }
 .cta-band .meta-row {
   color: var(--btm-paper); border-bottom-color: var(--btm-paper);
 }
-.cta-band .meta-row .num { color: var(--btm-ink); }
+.cta-band .meta-row .num { color: var(--btm-paper); font-weight: 700; }
 
 /* ----- Footer ----------------------------------------- */
 footer.site-foot {
@@ -1338,6 +1338,11 @@ footer.site-foot .bottom .legal {
 /* Assureurs — note légale et chapô de réponse FAQ */
 .note-block { margin-top: var(--s-5); max-width: 64ch; }
 .answer-lead { color: var(--btm-ink); }
+
+/* Accessibilité — accent éclairci sur fonds noirs (contraste AA 4.5:1) */
+.band.on-ink,
+.contact-layout .info-side,
+footer.site-foot { --accent: var(--accent-on-ink); }
 
 /* Accessibilité — focus clavier visible (global) */
 :focus-visible {

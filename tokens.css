@@ -65,6 +65,9 @@
 
   --accent:        var(--btm-terracotta);
   --accent-press:  var(--btm-terracotta-2);
+  /* Accent éclairci pour texte sur fond noir — atteint le ratio AA 4.5:1
+     (terracotta #B14A2A ne fait que 3.57:1 sur l'encre). */
+  --accent-on-ink: #C9583B;
 
   --rule:          var(--btm-rule);
   --rule-strong:   var(--btm-ash);

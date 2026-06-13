@@ -10,7 +10,8 @@
   const toggle = document.querySelector('.nav-toggle');
   if (toggle && nav) {
     toggle.addEventListener('click', () => {
-      nav.classList.toggle('is-open');
+      const open = nav.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
   }
 
@@ -92,6 +93,12 @@
     });
     modal.addEventListener('click', (e) => {
       if (e.target === modal) {
+        modal.classList.remove('is-open');
+        sessionStorage.setItem('btm-modal-seen', '1');
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('is-open')) {
         modal.classList.remove('is-open');
         sessionStorage.setItem('btm-modal-seen', '1');
       }
