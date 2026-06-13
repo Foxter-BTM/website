@@ -914,6 +914,35 @@ footer.site-foot .bottom .legal {
   display: block; color: var(--btm-ink); font-weight: 500;
   font-size: 11px; margin-bottom: 6px;
 }
+
+/* Portraits — monogrammes géométriques (placeholders typographiques) */
+.founder .portrait.portrait--mono {
+  background: var(--btm-ink);
+  border: 0;
+  overflow: hidden;
+}
+.founder .portrait.portrait--mono::before { content: none; }
+.portrait--mono .mono-initials {
+  position: relative; z-index: 2;
+  font-family: var(--font-display); font-weight: 900;
+  font-size: clamp(72px, 9vw, 128px); line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--btm-paper);
+}
+.portrait--mono .mono-shape {
+  position: absolute; z-index: 1;
+  background: var(--accent);
+}
+/* Timothé — cercle (atelier, peinture) */
+.mono-shape--circle {
+  width: 46%; aspect-ratio: 1; border-radius: 50%;
+  top: -8%; right: -10%;
+}
+/* Grégoire — bloc (gestion, structure) */
+.mono-shape--block {
+  width: 42%; aspect-ratio: 1;
+  bottom: -10%; left: -8%;
+}
 .founder .meta {
   display: flex; justify-content: space-between;
   font-family: var(--font-mono); font-size: var(--fs-micro);
@@ -1304,6 +1333,19 @@ footer.site-foot .bottom .legal {
 /* Assureurs — note légale et chapô de réponse FAQ */
 .note-block { margin-top: var(--s-5); max-width: 64ch; }
 .answer-lead { color: var(--btm-ink); }
+
+/* À propos — note des fondateurs (fond noir) */
+.engagement-grid {
+  display: grid; grid-template-columns: 1.2fr 1fr; gap: var(--s-8);
+  align-items: start;
+}
+@media (max-width: 880px) { .engagement-grid { grid-template-columns: 1fr; gap: var(--s-6); } }
+.engagement-title {
+  font-size: clamp(40px, 5vw, 72px); line-height: 1; letter-spacing: -0.02em;
+}
+.engagement-note p { margin-bottom: var(--s-4); }
+.engagement-note p:last-child { margin-bottom: 0; }
+.engagement-sign { color: var(--accent); }
 
 /* =========================================================
    FLAGS ÉDITORIAUX — visibles uniquement avec ?btm-edit
