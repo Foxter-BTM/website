@@ -1136,27 +1136,32 @@ footer.site-foot .bottom .legal {
 .field input,
 .field textarea,
 .field select {
-  font-family: var(--font-mono); font-size: 14px;
+  font-family: var(--font-mono); font-size: 16px;
   color: var(--btm-ink);
-  background: var(--btm-paper);
-  border: 1px solid var(--btm-ink);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--btm-ink);
   border-radius: var(--radius-0);
-  padding: 14px 16px;
+  padding: 10px 2px;
   width: 100%;
   outline: none;
-  transition: border-color var(--dur-fast) var(--ease-out),
-              background var(--dur-fast) var(--ease-out);
+  transition: border-color var(--dur-fast) var(--ease-out);
 }
 .field input:focus,
 .field textarea:focus,
 .field select:focus {
-  border-color: var(--accent);
-  background: var(--btm-paper-lite);
+  border-bottom-color: var(--accent);
+  border-bottom-width: 2px;
+  padding-bottom: 9px;
 }
-.field textarea { resize: vertical; min-height: 140px; }
+.field textarea {
+  resize: vertical; min-height: 120px;
+  border: 1px solid var(--btm-ink); padding: 14px 16px;
+}
+.field textarea:focus { border-color: var(--accent); padding-bottom: 14px; }
 .field input.invalid,
 .field textarea.invalid,
-.field select.invalid { border-color: var(--accent); background: rgba(177,74,42,0.06); }
+.field select.invalid { border-color: var(--accent); border-bottom-color: var(--accent); }
 .field .hint {
   font-family: var(--font-mono); font-size: var(--fs-micro);
   color: var(--btm-stone);
@@ -1333,6 +1338,51 @@ footer.site-foot .bottom .legal {
 /* Assureurs — note légale et chapô de réponse FAQ */
 .note-block { margin-top: var(--s-5); max-width: 64ch; }
 .answer-lead { color: var(--btm-ink); }
+
+/* Accessibilité — focus clavier visible (global) */
+:focus-visible {
+  outline: 2px solid var(--btm-ink);
+  outline-offset: 2px;
+}
+.band.on-ink :focus-visible,
+.info-side :focus-visible,
+.site-foot :focus-visible { outline-color: var(--accent); }
+
+/* Contact — section formulaire + accents */
+.contact-section { border-bottom: 1px solid var(--btm-ink); }
+.req-accent { color: var(--accent); }
+.form-side__head-gap { margin-top: var(--s-7); }
+.info-side__head-gap { margin-top: var(--s-6); }
+.form-actions { display: flex; gap: var(--s-4); flex-wrap: wrap; margin-top: var(--s-4); }
+.consent-label {
+  display: flex; align-items: flex-start; gap: 12px;
+  color: var(--btm-graphite); text-transform: none; letter-spacing: 0;
+  font-size: 13px; line-height: 1.6; cursor: pointer;
+}
+.consent-label input { width: auto; margin-top: 3px; }
+.success-actions { margin-top: var(--s-5); display: flex; gap: var(--s-4); flex-wrap: wrap; }
+
+/* Contact — info-side (fond noir) : cascade remplace les overrides inline */
+.contact-layout .info-side .meta-row { border-color: var(--btm-paper); color: var(--btm-bone); }
+.contact-layout .info-side .meta-row .num { color: var(--accent); }
+.contact-layout .info-side .meta-row .right { color: var(--btm-bone); }
+.contact-layout .info-side .group b { color: var(--btm-paper); }
+.contact-layout .info-side .group .note { margin-top: 8px; font-size: 13px; }
+.contact-layout .info-side .group--flush { border: 0; }
+.contact-layout .info-side .big--phone {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 24px; letter-spacing: -0.01em; line-height: 1.1;
+  color: var(--btm-paper);
+}
+.contact-layout .info-side .big--delay {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: 32px; line-height: 1; letter-spacing: -0.015em;
+  color: var(--btm-paper); margin-top: 4px;
+}
+.contact-layout .info-side .hours-note {
+  font-size: 13px; color: var(--btm-stone); margin-bottom: 8px;
+}
+.success-eyebrow { color: var(--accent); margin-bottom: var(--s-4); }
 
 /* À propos — note des fondateurs (fond noir) */
 .engagement-grid {
