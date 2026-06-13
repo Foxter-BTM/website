@@ -70,10 +70,12 @@
   --rule-strong:   var(--btm-ash);
   --rule-inverse:  var(--btm-rule-inv);
 
-  /* ---------- Typographie — deux familles seulement ---------- */
+  /* ---------- Typographie — une seule famille ---------- */
   --font-display:  'Archivo', 'Helvetica Neue', Arial, sans-serif;
-  --font-mono:     'IBM Plex Mono', ui-monospace, Menlo, monospace;
-  /* Note : pas de --font-sans. Le mono porte aussi le corps. */
+  /* Une seule famille. --font-mono est conservé comme ALIAS pour compatibilité
+     avec site.css — il pointe sur Archivo. La « voix atelier » des labels passe
+     par uppercase + tracking large + graisse 500, plus par le mono. */
+  --font-mono:     var(--font-display);
 
   /* Échelle (éditoriale, retenue) */
   --fs-mega:   clamp(72px, 10vw, 176px);
@@ -81,9 +83,9 @@
   --fs-h2:     clamp(32px, 4vw, 56px);
   --fs-h3:     28px;
   --fs-h4:     20px;
-  --fs-body:   14px;
-  --fs-small:  12px;
-  --fs-micro:  10px;
+  --fs-body:   16px;
+  --fs-small:  13px;
+  --fs-micro:  11px;
 
   --lh-tight:    0.85;
   --lh-display:  0.95;
@@ -141,6 +143,10 @@
   --dur-fast: 140ms;
   --dur-med:  260ms;
   --dur-slow: 480ms;
+
+  /* ---------- Motion — révélation scroll ---------- */
+  --reveal-distance: 24px;
+  --reveal-dur: 600ms;
 }
 
 /* =========================================================
@@ -224,7 +230,7 @@ html, body {
 .btm-lead {
   font-family: var(--font-mono);
   font-weight: 400;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.6;
   color: var(--fg-muted);
   max-width: 56ch;
