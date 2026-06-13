@@ -1,16 +1,29 @@
 /* =========================================================
    BTM Carrosserie — Foundations
-   Direction Bauhaus contemporain · Mai 2026
+   Direction Bauhaus contemporain · Refonte juin 2026
    Load this before any component CSS.
 
    Système :
-   - Palette : noir profond + crème + un seul rouge terracotta
-   - Typographie : Archivo (display) + IBM Plex Mono (fonctionnel)
+   - Palette : noir profond + crème + un seul rouge terracotta (#B14A2A)
+   - Typographie : Archivo Variable self-hosted, famille unique (display + corps + labels)
    - Géométrie : ligne, bloc, cercle. Aucune autre forme.
    - Grille : 12 colonnes, gouttière 24, marges 96
    ========================================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap');
+@font-face {
+  font-family: 'Archivo';
+  src: url('/fonts/archivo-vf.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Archivo';
+  src: url('/fonts/archivo-vf-italic.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
 
 :root {
   /* ---------- Palette — noir, crème, un rouge ---------- */
