@@ -153,10 +153,11 @@ section.band.on-ink p { color: var(--btm-bone); }
 .hero h1 {
   font-family: var(--font-display);
   font-weight: 900;
-  font-size: clamp(56px, 8vw, 132px);
+  font-size: clamp(38px, 8vw, 132px);
   line-height: 0.92;
   letter-spacing: -0.025em;
   margin: 0;
+  overflow-wrap: break-word;
 }
 .hero h1 .terra { color: var(--accent); }
 .hero h1 em {
@@ -249,12 +250,13 @@ section.band.on-ink p { color: var(--btm-bone); }
 .page-head .eyebrow span { color: var(--btm-stone); margin-left: 12px; }
 .page-head h1 {
   font-family: var(--font-display);
-  font-size: clamp(48px, 6vw, 88px);
+  font-size: clamp(36px, 6vw, 88px);
   font-weight: 900;
   line-height: 0.95;
   letter-spacing: -0.02em;
   max-width: 18ch;
   margin: 0;
+  overflow-wrap: break-word;
 }
 .page-head .lead {
   margin-top: var(--s-5);
