@@ -10,13 +10,17 @@
   const toggle = document.querySelector('.nav-toggle');
   if (toggle && nav) {
     toggle.addEventListener('click', () => {
-      nav.classList.toggle('is-open');
+      const open = nav.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
   }
 
-  // ---- Reveal on scroll -------------------------------
+  // ---- Reveal on scroll (fallback si pas de scroll-driven CSS) ----
+  const supportsScrollTimeline =
+    typeof CSS !== 'undefined' && CSS.supports('animation-timeline: view()');
   const targets = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window && targets.length) {
+  if (!supportsScrollTimeline && 'IntersectionObserver' in window && targets.length) {
+    document.documentElement.classList.add('js-reveal');
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
@@ -29,8 +33,6 @@
       { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
     );
     targets.forEach((t) => io.observe(t));
-  } else {
-    targets.forEach((t) => t.classList.add('is-visible'));
   }
 
   // ---- Contact form (light validation) ----------------
@@ -91,6 +93,12 @@
     });
     modal.addEventListener('click', (e) => {
       if (e.target === modal) {
+        modal.classList.remove('is-open');
+        sessionStorage.setItem('btm-modal-seen', '1');
+      }
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('is-open')) {
         modal.classList.remove('is-open');
         sessionStorage.setItem('btm-modal-seen', '1');
       }

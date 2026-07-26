@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>BTM Carrosserie — Carrosserie indépendante à Bayonne | Pays Basque</title>
 <meta name="description" content="BTM Carrosserie — atelier indépendant à Bayonne, Biarritz, Anglet. Réparation après sinistre, peinture automobile, débosselage. Gestion complète de votre dossier assureur. Devis sous 48 h."/>
-<meta name="keywords" content="carrosserie Bayonne, carrosserie Biarritz, carrosserie Anglet, carrosserie Pays Basque, réparation auto Bayonne, peinture auto Pays Basque"/>
 <meta name="robots" content="index, follow"/>
 <meta name="author" content="BTM Carrosserie"/>
 <link rel="canonical" href="https://btm-carrosserie.fr/"/>
@@ -15,7 +14,7 @@
 <meta property="og:description" content="Atelier indépendant. Tôlerie, peinture, gestion assurance. Bayonne · Biarritz · Anglet."/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://btm-carrosserie.fr/"/>
-<meta property="og:image" content="https://btm-carrosserie.fr/images/og-btm.jpg"/>
+<meta property="og:image" content="https://btm-carrosserie.fr/images/og-btm.png"/>
 <meta property="og:locale" content="fr_FR"/>
 <meta property="og:site_name" content="BTM Carrosserie"/>
 
@@ -23,21 +22,22 @@
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="BTM Carrosserie — Bayonne | Pays Basque"/>
 <meta name="twitter:description" content="Atelier indépendant. Tôlerie, peinture, gestion assurance."/>
-<meta name="twitter:image" content="https://btm-carrosserie.fr/images/og-btm.jpg"/>
+<meta name="twitter:image" content="https://btm-carrosserie.fr/images/og-btm.png"/>
 
 <!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
-<link rel="apple-touch-icon" href="/favicon.svg"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
 
 <!-- Schema.org LocalBusiness -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "AutoRepair",
+  "@type": "AutoBodyShop",
   "name": "BTM Carrosserie",
   "description": "Carrosserie indépendante spécialisée en réparation sinistres, peinture automobile et débosselage. Secteur Bayonne · Biarritz · Anglet — Pays Basque. Ouverture début 2027.",
   "url": "https://btm-carrosserie.fr",
-  "image": "https://btm-carrosserie.fr/images/og-btm.jpg",
+  "image": "https://btm-carrosserie.fr/images/og-btm.png",
   "logo": "https://btm-carrosserie.fr/images/logo-btm.svg",
   "areaServed": ["Bayonne", "Biarritz", "Anglet", "Pays Basque", "Landes"],
   "priceRange": "€€",
@@ -45,6 +45,7 @@
 }
 </script>
 
+<link rel="preload" href="/fonts/archivo-vf.woff2" as="font" type="font/woff2" crossorigin/>
 <link rel="stylesheet" href="tokens.css"/>
 <link rel="stylesheet" href="site.css"/>
 </head>
@@ -87,15 +88,13 @@
 ====================================================== -->
 <section class="hero">
   <div class="wrap">
-    <div class="meta-row reveal">
+    <div class="meta-row seq seq-1">
       <span><span class="num">01 /</span> Carrosserie indépendante</span>
       <span class="right">Bayonne · Biarritz · Anglet — Pays Basque</span>
     </div>
 
-    <div style="height: 64px;"></div>
-
     <div class="hero-grid">
-      <div class="reveal">
+      <div class="seq seq-2">
         <h1>
           <em>Atelier · ouverture prévue début 2027</em>
           Carrosserie<br/>
@@ -103,7 +102,8 @@
           Pays Basque.
         </h1>
       </div>
-      <div class="reveal d1">
+      <div class="seq seq-3">
+        <span class="btm-block btm-block--ink parallax hero-mark" aria-hidden="true"></span>
         <p class="lead">
           Nous réparons les voitures abîmées, gérons tout le volet technique de votre dossier assureur et restituons un véhicule fini avec le soin d'un atelier d'artisan. Pas d'enseigne franchisée, pas de promesse vide : un travail bien fait, et un client tenu informé.
         </p>
@@ -114,7 +114,7 @@
       </div>
     </div>
 
-    <div class="pillars reveal d2" aria-label="Repères clés">
+    <div class="pillars seq seq-4" aria-label="Repères clés">
       <div class="pillar">
         <div class="num">01 /</div>
         <h3>Indépendants</h3>
@@ -258,7 +258,7 @@
     </div>
 
     <div class="quotes">
-      <p class="lead reveal" style="grid-column: 1 / -1;">Les premiers avis seront publiés à l'ouverture de l'atelier en 2027.</p>
+      <p class="lead reveal quotes__placeholder">Les premiers avis seront publiés à l'ouverture de l'atelier en 2027.</p>
     </div>
   </div>
 </section>
@@ -277,9 +277,9 @@
       <p class="lead">BTM n'est pas un réparateur agréé d'un réseau d'assureurs — et c'est sans incidence pour vous. La loi vous garantit le libre choix de votre réparateur (article L211-5-1 du Code des assurances) : votre assureur peut recommander un garage partenaire, il ne peut pas vous l'imposer.</p>
     </div>
 
-    <div style="margin-top: var(--s-6); display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 16px;">
-      <p class="btm-small" style="max-width: 56ch;">Votre assureur n'est pas un partenaire agréé de BTM ? Aucune importance : nous gérons votre dossier de la même façon, et vous restez libre de votre choix.</p>
-      <a href="assureurs/" class="more" style="font-family: var(--font-mono); font-size: 11px; letter-spacing: var(--trk-wide); text-transform: uppercase; border-bottom: 1px solid var(--btm-ink); padding-bottom: 4px;">Comment ça marche <span>→</span></a>
+    <div class="assureurs-foot">
+      <p class="btm-small assureurs-foot__note">Votre assureur n'est pas un partenaire agréé de BTM ? Aucune importance : nous gérons votre dossier de la même façon, et vous restez libre de votre choix.</p>
+      <a href="assureurs/" class="more more--rule">Comment ça marche <span>→</span></a>
     </div>
   </div>
 </section>
@@ -309,7 +309,7 @@
           </dd>
 
           <dt>Téléphone</dt>
-          <dd>+33 00 00 00 00 00 <span style="font-size: 11px; color: var(--btm-stone);">(ligne active à l'ouverture)</span></dd>
+          <dd>+33 00 00 00 00 00 <span class="dd-note">(ligne active à l'ouverture)</span></dd>
 
           <dt>Email</dt>
           <dd><a href="mailto:contact@btm-carrosserie.fr" class="text-link">contact@btm-carrosserie.fr</a></dd>
@@ -324,7 +324,7 @@
           <dd>Bayonne · Biarritz · Anglet · Saint-Jean-de-Luz · Hendaye · Sud Landes</dd>
         </dl>
 
-        <div style="display: flex; gap: 16px; margin-top: 16px; flex-wrap: wrap;">
+        <div class="info-actions">
           <a href="contact/" class="btn">Poser une question <span class="arrow">→</span></a>
         </div>
       </div>
@@ -351,9 +351,7 @@
       <span class="right">Réponse sous 24 à 48 h</span>
     </div>
 
-    <div style="height: 48px;"></div>
-
-    <div style="display: grid; grid-template-columns: 1.4fr 1fr; gap: 64px; align-items: end;">
+    <div class="cta-grid">
       <div class="reveal">
         <h2 id="cta-h">Une question<br/>sur votre véhicule ?</h2>
       </div>
@@ -380,23 +378,23 @@
       <div class="tagline">Carrosserie · Tôlerie · Peinture · Pays Basque · 2027</div>
     </div>
 
-    <div class="cols wrap" style="padding-left: 0; padding-right: 0;">
+    <div class="cols wrap cols--flush">
       <div class="col">
-        <h4>Atelier</h4>
+        <h3 class="col-head">Atelier</h3>
         <p>
           <b>BTM Carrosserie</b><br/>
           Secteur Bayonne · Biarritz · Anglet<br/>
           Pays Basque · France<br/>
           <!-- TODO: remplacer par adresse définitive à la signature du local -->
         </p>
-        <p style="margin-top: 16px;">
+        <p class="col-stack">
           +33 00 00 00 00 00 (ligne active à l'ouverture)<br/>
           <a href="mailto:contact@btm-carrosserie.fr">contact@btm-carrosserie.fr</a>
         </p>
       </div>
 
       <div class="col">
-        <h4>Site</h4>
+        <h3 class="col-head">Site</h3>
         <ul>
           <li><a href="/">Accueil</a></li>
           <li><a href="services/">Services</a></li>
@@ -407,7 +405,7 @@
       </div>
 
       <div class="col">
-        <h4>Services</h4>
+        <h3 class="col-head">Services</h3>
         <ul>
           <li><a href="services/#sinistre">Réparation sinistre</a></li>
           <li><a href="services/#peinture">Peinture auto</a></li>
@@ -418,7 +416,7 @@
       </div>
 
       <div class="col">
-        <h4>Zone</h4>
+        <h3 class="col-head">Zone</h3>
         <ul>
           <li>Bayonne</li>
           <li>Biarritz</li>

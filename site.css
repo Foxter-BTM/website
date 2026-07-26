@@ -3,7 +3,9 @@
    Layer above tokens.css
    ========================================================= */
 
-html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
 body { background: var(--btm-paper); color: var(--btm-ink); overflow-x: hidden; }
 img { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; }
@@ -151,10 +153,11 @@ section.band.on-ink p { color: var(--btm-bone); }
 .hero h1 {
   font-family: var(--font-display);
   font-weight: 900;
-  font-size: clamp(56px, 8vw, 132px);
+  font-size: clamp(38px, 8vw, 132px);
   line-height: 0.92;
   letter-spacing: -0.025em;
   margin: 0;
+  overflow-wrap: break-word;
 }
 .hero h1 .terra { color: var(--accent); }
 .hero h1 em {
@@ -247,12 +250,13 @@ section.band.on-ink p { color: var(--btm-bone); }
 .page-head .eyebrow span { color: var(--btm-stone); margin-left: 12px; }
 .page-head h1 {
   font-family: var(--font-display);
-  font-size: clamp(48px, 6vw, 88px);
+  font-size: clamp(36px, 6vw, 88px);
   font-weight: 900;
   line-height: 0.95;
   letter-spacing: -0.02em;
   max-width: 18ch;
   margin: 0;
+  overflow-wrap: break-word;
 }
 .page-head .lead {
   margin-top: var(--s-5);
@@ -260,15 +264,27 @@ section.band.on-ink p { color: var(--btm-bone); }
   font-family: var(--font-mono); font-size: 16px; line-height: 1.7;
   color: var(--btm-graphite);
 }
+.page-head__eyebrow { margin-top: var(--s-7); }
 .page-head .crumbs {
-  margin-top: var(--s-6);
-  display: flex; gap: 8px; align-items: baseline;
+  margin-top: var(--s-7);
+  display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: baseline;
   font-family: var(--font-mono); font-size: var(--fs-micro);
   letter-spacing: var(--trk-wide); text-transform: uppercase;
   color: var(--btm-stone);
+  border-top: 1px solid var(--btm-ink);
+  border-bottom: 1px solid var(--btm-ink);
+  padding: var(--s-4) 0;
 }
-.page-head .crumbs a:hover { color: var(--btm-ink); }
-.page-head .crumbs .sep { color: var(--accent); }
+.page-head .crumbs a {
+  border-bottom: 0;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+.page-head .crumbs a:hover { color: var(--accent); }
+.page-head .crumbs .sep { color: var(--btm-rule); }
+@media (max-width: 560px) {
+  .page-head .crumbs { flex-direction: column; gap: 10px; }
+  .page-head .crumbs .sep { display: none; }
+}
 
 /* ----- Section title block ----------------------------- */
 .section-head { margin-bottom: var(--s-7); }
@@ -353,7 +369,7 @@ section.band.on-ink p { color: var(--btm-bone); }
 }
 .reasons .reason:last-child { border-right: 0; padding-right: 0; }
 .reasons .reason .num {
-  font-family: var(--font-display); font-weight: 900;
+  font-family: var(--font-display); font-weight: 200;
   font-size: 96px; letter-spacing: -0.03em; line-height: 0.85;
   color: var(--accent);
   margin-bottom: var(--s-5);
@@ -564,7 +580,7 @@ section.band.on-ink p { color: var(--btm-bone); }
 .cta-band .meta-row {
   color: var(--btm-paper); border-bottom-color: var(--btm-paper);
 }
-.cta-band .meta-row .num { color: var(--btm-ink); }
+.cta-band .meta-row .num { color: var(--btm-paper); font-weight: 700; }
 
 /* ----- Footer ----------------------------------------- */
 footer.site-foot {
@@ -593,7 +609,8 @@ footer.site-foot .cols {
   display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: var(--s-6);
   border-top: 1px solid var(--btm-rule-inv); padding-top: var(--s-7);
 }
-footer.site-foot .col h4 {
+footer.site-foot .col h4,
+footer.site-foot .col .col-head {
   font-family: var(--font-mono); font-weight: 500; font-size: var(--fs-micro);
   letter-spacing: var(--trk-wide); text-transform: uppercase;
   color: var(--accent); margin-bottom: var(--s-4);
@@ -716,50 +733,104 @@ footer.site-foot .bottom .legal {
   .service-detail .left .num { font-size: 64px; }
 }
 
+/* Section assureur sur fond noir — cascade (remplace les overrides inline) */
+.band.on-ink .service-detail { border-top-color: var(--btm-rule-inv); }
+.band.on-ink .service-detail .left h2,
+.band.on-ink .service-detail .right h3,
+.band.on-ink .service-detail .right .feature-list li b { color: var(--btm-paper); }
+.band.on-ink .service-detail .left .label { color: var(--btm-bone); }
+.band.on-ink .service-detail .right .lead,
+.band.on-ink .service-detail .right p,
+.band.on-ink .service-detail .right .feature-list li { color: var(--btm-bone); }
+.band.on-ink .service-detail .right .feature-list,
+.band.on-ink .service-detail .right .feature-list li { border-color: var(--btm-rule-inv); }
+.band.on-ink .service-detail .right .advantage {
+  background: var(--btm-ink-2); color: var(--btm-paper);
+}
+.band.on-ink .service-detail .right .advantage span { color: var(--btm-bone); }
+.band.on-ink .service-detail .right .footer-link {
+  color: var(--accent); border-color: var(--accent);
+}
+
+/* Composition alternée + numéro géant décoratif (page Services) */
+.service-detail { position: relative; }
+.service-detail .left { position: relative; z-index: 1; }
+.service-detail--mirror { grid-template-columns: 2fr 1fr; }
+.service-detail--mirror .left { order: 2; }
+.service-detail--mirror .right { order: 1; }
+.service-detail--mirror .ghost-num { right: auto; left: 0; }
+.service-detail .ghost-num {
+  position: absolute; top: -0.18em; right: 0; z-index: 0;
+  font-family: var(--font-display); font-weight: 200;
+  font-size: clamp(120px, 22vw, 320px); line-height: 0.8;
+  letter-spacing: -0.04em;
+  color: var(--btm-sand);
+  pointer-events: none; user-select: none;
+}
+.band.lite .service-detail .ghost-num { color: var(--btm-bone); }
+.band.sand .service-detail .ghost-num { color: var(--btm-bone); }
+.band.on-ink .service-detail .ghost-num { color: var(--btm-ink-2); }
+@media (max-width: 880px) {
+  .service-detail--mirror { grid-template-columns: 1fr; }
+  .service-detail--mirror .left { order: 0; }
+  .service-detail--mirror .right { order: 0; }
+  .service-detail .ghost-num { font-size: clamp(100px, 30vw, 180px); }
+}
+
+/* Ancres — décalage sous le sommaire collant */
+:target { scroll-margin-top: 96px; }
+
 /* ----- Flow (assureurs page) -------------------------- */
+/* Timeline verticale constructiviste — ligne continue + jalons circulaires */
 .flow {
-  display: grid; grid-template-columns: repeat(4, 1fr);
-  gap: 0; border-top: 2px solid var(--btm-ink);
+  position: relative;
+  padding-left: var(--s-7);
+  margin-top: var(--s-5);
+}
+.flow::before {
+  content: ""; position: absolute;
+  left: 5px; top: 8px; bottom: 8px; width: 1px;
+  background: var(--btm-ink);
 }
 .flow .step {
-  padding: var(--s-6) var(--s-4);
-  border-right: 1px solid var(--btm-ink);
-  background: var(--btm-paper);
   position: relative;
+  padding: 0 0 var(--s-7) var(--s-6);
 }
-.flow .step:last-child { border-right: 0; }
+.flow .step:last-child { padding-bottom: 0; }
+.flow .step::before {
+  content: ""; position: absolute;
+  left: -22px; top: 4px;
+  width: 11px; height: 11px; border-radius: 50%;
+  background: var(--btm-paper);
+  border: 1px solid var(--btm-ink);
+}
+/* Premier jalon — unique accent rouge de l'écran (signature) */
+.flow .step:first-child::before { background: var(--accent); border-color: var(--accent); }
 .flow .step .num {
   font-family: var(--font-mono); font-size: var(--fs-micro);
-  letter-spacing: var(--trk-wide); color: var(--accent);
-  margin-bottom: var(--s-4);
+  letter-spacing: var(--trk-wide); text-transform: uppercase;
+  color: var(--btm-stone);
+  margin-bottom: var(--s-3);
 }
 .flow .step h3 {
   font-family: var(--font-display); font-weight: 800;
-  font-size: 24px; letter-spacing: -0.01em; line-height: 1.1;
-  margin-bottom: var(--s-3); max-width: 14ch;
+  font-size: clamp(24px, 2.6vw, 34px); letter-spacing: -0.015em; line-height: 1.05;
+  margin-bottom: var(--s-3); max-width: 18ch;
 }
 .flow .step p {
-  font-family: var(--font-mono); font-size: 12px; line-height: 1.65;
-  color: var(--btm-graphite);
+  font-family: var(--font-mono); font-size: 14px; line-height: 1.7;
+  color: var(--btm-graphite); max-width: 60ch;
 }
 .flow .step .duration {
   margin-top: var(--s-4);
   font-family: var(--font-mono); font-size: var(--fs-micro);
   letter-spacing: var(--trk-wide); text-transform: uppercase;
   color: var(--btm-stone);
-  padding-top: var(--s-3);
+  display: inline-block;
+  padding-top: var(--s-2);
   border-top: 1px solid var(--btm-rule);
 }
 .flow .step .duration b { color: var(--btm-ink); font-weight: 500; }
-@media (max-width: 880px) {
-  .flow { grid-template-columns: 1fr 1fr; }
-  .flow .step:nth-child(2n) { border-right: 0; }
-  .flow .step:nth-child(-n+2) { border-bottom: 1px solid var(--btm-ink); }
-}
-@media (max-width: 520px) {
-  .flow { grid-template-columns: 1fr; }
-  .flow .step { border-right: 0; border-bottom: 1px solid var(--btm-ink); }
-}
 
 /* ----- FAQ -------------------------------------------- */
 .faq {
@@ -845,6 +916,35 @@ footer.site-foot .bottom .legal {
 .founder .portrait .label-img b {
   display: block; color: var(--btm-ink); font-weight: 500;
   font-size: 11px; margin-bottom: 6px;
+}
+
+/* Portraits — monogrammes géométriques (placeholders typographiques) */
+.founder .portrait.portrait--mono {
+  background: var(--btm-ink);
+  border: 0;
+  overflow: hidden;
+}
+.founder .portrait.portrait--mono::before { content: none; }
+.portrait--mono .mono-initials {
+  position: relative; z-index: 2;
+  font-family: var(--font-display); font-weight: 900;
+  font-size: clamp(72px, 9vw, 128px); line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--btm-paper);
+}
+.portrait--mono .mono-shape {
+  position: absolute; z-index: 1;
+  background: var(--accent);
+}
+/* Timothé — cercle (atelier, peinture) */
+.mono-shape--circle {
+  width: 46%; aspect-ratio: 1; border-radius: 50%;
+  top: -8%; right: -10%;
+}
+/* Grégoire — bloc (gestion, structure) */
+.mono-shape--block {
+  width: 42%; aspect-ratio: 1;
+  bottom: -10%; left: -8%;
 }
 .founder .meta {
   display: flex; justify-content: space-between;
@@ -1039,27 +1139,32 @@ footer.site-foot .bottom .legal {
 .field input,
 .field textarea,
 .field select {
-  font-family: var(--font-mono); font-size: 14px;
+  font-family: var(--font-mono); font-size: 16px;
   color: var(--btm-ink);
-  background: var(--btm-paper);
-  border: 1px solid var(--btm-ink);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--btm-ink);
   border-radius: var(--radius-0);
-  padding: 14px 16px;
+  padding: 10px 2px;
   width: 100%;
   outline: none;
-  transition: border-color var(--dur-fast) var(--ease-out),
-              background var(--dur-fast) var(--ease-out);
+  transition: border-color var(--dur-fast) var(--ease-out);
 }
 .field input:focus,
 .field textarea:focus,
 .field select:focus {
-  border-color: var(--accent);
-  background: var(--btm-paper-lite);
+  border-bottom-color: var(--accent);
+  border-bottom-width: 2px;
+  padding-bottom: 9px;
 }
-.field textarea { resize: vertical; min-height: 140px; }
+.field textarea {
+  resize: vertical; min-height: 120px;
+  border: 1px solid var(--btm-ink); padding: 14px 16px;
+}
+.field textarea:focus { border-color: var(--accent); padding-bottom: 14px; }
 .field input.invalid,
 .field textarea.invalid,
-.field select.invalid { border-color: var(--accent); background: rgba(177,74,42,0.06); }
+.field select.invalid { border-color: var(--accent); border-bottom-color: var(--accent); }
 .field .hint {
   font-family: var(--font-mono); font-size: var(--fs-micro);
   color: var(--btm-stone);
@@ -1092,17 +1197,66 @@ footer.site-foot .bottom .legal {
   color: var(--btm-graphite);
 }
 
-/* ----- Reveal animation ------------------------------- */
-.reveal {
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out);
+/* =========================================================
+   MOTION — révélation au scroll
+   Priorité : CSS scroll-driven. Fallback : IntersectionObserver (site.js).
+   Sans JS et sans scroll-driven : contenu toujours visible.
+   prefers-reduced-motion coupe tout mouvement.
+   ========================================================= */
+.reveal { opacity: 1; }
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Fallback IO : masquage initial seulement si JS a posé .js-reveal sur <html> */
+  .js-reveal .reveal {
+    opacity: 0;
+    transform: translateY(var(--reveal-distance));
+    transition: opacity var(--reveal-dur) var(--ease-out),
+                transform var(--reveal-dur) var(--ease-out);
+  }
+  .js-reveal .reveal.is-visible { opacity: 1; transform: none; }
+  .js-reveal .reveal.d1 { transition-delay: 90ms; }
+  .js-reveal .reveal.d2 { transition-delay: 180ms; }
+  .js-reveal .reveal.d3 { transition-delay: 270ms; }
+  .js-reveal .reveal.d4 { transition-delay: 360ms; }
+
+  /* Scroll-driven natif : prend le dessus quand supporté */
+  @supports (animation-timeline: view()) {
+    .reveal, .js-reveal .reveal {
+      opacity: 1; transform: none; transition: none;
+      animation: btm-reveal both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 45%;
+    }
+    @keyframes btm-reveal {
+      from { opacity: 0; transform: translateY(var(--reveal-distance)); }
+      to   { opacity: 1; transform: none; }
+    }
+    /* Parallaxe léger — blocs géométriques décoratifs uniquement */
+    .parallax {
+      animation: btm-parallax linear both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 100%;
+    }
+    @keyframes btm-parallax {
+      from { transform: translateY(32px); }
+      to   { transform: translateY(-32px); }
+    }
+  }
+
+  /* Séquence d'entrée hero — cascade au chargement (page d'accueil) */
+  .hero .seq {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: btm-enter 700ms var(--ease-out) forwards;
+  }
+  .hero .seq-1 { animation-delay: 80ms; }
+  .hero .seq-2 { animation-delay: 220ms; }
+  .hero .seq-3 { animation-delay: 360ms; }
+  .hero .seq-4 { animation-delay: 500ms; }
+  @keyframes btm-enter {
+    to { opacity: 1; transform: none; }
+  }
 }
-.reveal.is-visible { opacity: 1; transform: translateY(0); }
-.reveal.d1 { transition-delay: 80ms; }
-.reveal.d2 { transition-delay: 160ms; }
-.reveal.d3 { transition-delay: 240ms; }
-.reveal.d4 { transition-delay: 320ms; }
 
 /* ----- Misc utilities --------------------------------- */
 .eyebrow {
@@ -1116,6 +1270,145 @@ footer.site-foot .bottom .legal {
   height: 2px; background: var(--btm-ink); width: 64px;
   margin: var(--s-4) 0;
 }
+
+/* Accessibilité — masquage visuel mais lisible aux lecteurs d'écran */
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip-path: inset(50%); white-space: nowrap; border: 0;
+}
+
+/* =========================================================
+   Recomposition — classes issues du retrait des styles inline
+   ========================================================= */
+
+/* Hero — bloc signature géométrique (parallaxe) */
+.hero-mark {
+  width: 56px; height: 56px;
+  margin-bottom: var(--s-5);
+}
+
+/* Accueil — pied de section assureurs */
+.assureurs-foot {
+  margin-top: var(--s-6);
+  display: flex; justify-content: space-between; align-items: baseline;
+  flex-wrap: wrap; gap: var(--s-4);
+}
+.assureurs-foot__note { max-width: 56ch; }
+.more--rule {
+  font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: var(--trk-wide); text-transform: uppercase;
+  border-bottom: 1px solid var(--btm-ink); padding-bottom: 4px;
+  display: inline-flex; gap: 8px; align-items: center;
+  white-space: nowrap;
+}
+.more--rule:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* Accueil — placeholder avis */
+.quotes__placeholder { grid-column: 1 / -1; }
+
+/* Localisation — note inline et actions */
+.dd-note { font-size: 11px; color: var(--btm-stone); }
+.info-actions { display: flex; gap: var(--s-4); margin-top: var(--s-4); flex-wrap: wrap; }
+
+/* CTA band — grille */
+.cta-grid {
+  margin-top: var(--s-7);
+  display: grid; grid-template-columns: 1.4fr 1fr; gap: var(--s-8);
+  align-items: end;
+}
+@media (max-width: 720px) {
+  .cta-grid { grid-template-columns: 1fr; gap: var(--s-5); }
+}
+
+/* Footer — colonnes à fond perdu */
+.cols--flush { padding-left: 0; padding-right: 0; }
+.col-stack { margin-top: var(--s-4); }
+
+/* Assureurs — split client / BTM (fond noir) */
+.split-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-8);
+  border-top: 1px solid var(--btm-rule-inv); padding-top: var(--s-7);
+}
+@media (max-width: 720px) { .split-grid { grid-template-columns: 1fr; gap: var(--s-6); } }
+.eyebrow--accent { color: var(--accent); margin-bottom: var(--s-4); }
+
+/* Cascade feature-list sur fond noir (hors service-detail) */
+.band.on-ink .feature-list,
+.band.on-ink .feature-list li { border-color: var(--btm-rule-inv); color: var(--btm-bone); }
+.band.on-ink .feature-list li b { color: var(--btm-paper); }
+
+/* Assureurs — note légale et chapô de réponse FAQ */
+.note-block { margin-top: var(--s-5); max-width: 64ch; }
+.answer-lead { color: var(--btm-ink); }
+
+/* Accessibilité — sur fonds noirs : accent éclairci + méta éclaircie (AA 4.5:1).
+   --fg-meta = var(--btm-stone), donc redéfinir stone propage à toute la méta. */
+.band.on-ink,
+.contact-layout .info-side,
+footer.site-foot,
+.preopen-banner {
+  --accent: var(--accent-on-ink);
+  --btm-stone: #9A9484;
+}
+
+/* Accessibilité — focus clavier visible (global) */
+:focus-visible {
+  outline: 2px solid var(--btm-ink);
+  outline-offset: 2px;
+}
+.band.on-ink :focus-visible,
+.info-side :focus-visible,
+.site-foot :focus-visible { outline-color: var(--accent); }
+
+/* Contact — section formulaire + accents */
+.contact-section { border-bottom: 1px solid var(--btm-ink); }
+.req-accent { color: var(--accent); }
+.form-side__head-gap { margin-top: var(--s-7); }
+.info-side__head-gap { margin-top: var(--s-6); }
+.form-actions { display: flex; gap: var(--s-4); flex-wrap: wrap; margin-top: var(--s-4); }
+.consent-label {
+  display: flex; align-items: flex-start; gap: 12px;
+  color: var(--btm-graphite); text-transform: none; letter-spacing: 0;
+  font-size: 13px; line-height: 1.6; cursor: pointer;
+}
+.consent-label input { width: auto; margin-top: 3px; }
+.success-actions { margin-top: var(--s-5); display: flex; gap: var(--s-4); flex-wrap: wrap; }
+
+/* Contact — info-side (fond noir) : cascade remplace les overrides inline */
+.contact-layout .info-side .meta-row { border-color: var(--btm-paper); color: var(--btm-bone); }
+.contact-layout .info-side .meta-row .num { color: var(--accent); }
+.contact-layout .info-side .meta-row .right { color: var(--btm-bone); }
+.contact-layout .info-side .group b { color: var(--btm-paper); }
+.contact-layout .info-side .group .note { margin-top: 8px; font-size: 13px; }
+.contact-layout .info-side .group--flush { border: 0; }
+.contact-layout .info-side .big--phone {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 24px; letter-spacing: -0.01em; line-height: 1.1;
+  color: var(--btm-paper);
+}
+.contact-layout .info-side .big--delay {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: 32px; line-height: 1; letter-spacing: -0.015em;
+  color: var(--btm-paper); margin-top: 4px;
+}
+.contact-layout .info-side .hours-note {
+  font-size: 13px; color: var(--btm-stone); margin-bottom: 8px;
+}
+.success-eyebrow { color: var(--accent); margin-bottom: var(--s-4); }
+
+/* À propos — note des fondateurs (fond noir) */
+.engagement-grid {
+  display: grid; grid-template-columns: 1.2fr 1fr; gap: var(--s-8);
+  align-items: start;
+}
+@media (max-width: 880px) { .engagement-grid { grid-template-columns: 1fr; gap: var(--s-6); } }
+.engagement-title {
+  font-size: clamp(40px, 5vw, 72px); line-height: 1; letter-spacing: -0.02em;
+}
+.engagement-note p { margin-bottom: var(--s-4); }
+.engagement-note p:last-child { margin-bottom: 0; }
+.engagement-sign { color: var(--accent); }
 
 /* =========================================================
    FLAGS ÉDITORIAUX — visibles uniquement avec ?btm-edit

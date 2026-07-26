@@ -1,16 +1,29 @@
 /* =========================================================
    BTM Carrosserie — Foundations
-   Direction Bauhaus contemporain · Mai 2026
+   Direction Bauhaus contemporain · Refonte juin 2026
    Load this before any component CSS.
 
    Système :
-   - Palette : noir profond + crème + un seul rouge terracotta
-   - Typographie : Archivo (display) + IBM Plex Mono (fonctionnel)
+   - Palette : noir profond + crème + un seul rouge terracotta (#B14A2A)
+   - Typographie : Archivo Variable self-hosted, famille unique (display + corps + labels)
    - Géométrie : ligne, bloc, cercle. Aucune autre forme.
    - Grille : 12 colonnes, gouttière 24, marges 96
    ========================================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap');
+@font-face {
+  font-family: 'Archivo';
+  src: url('/fonts/archivo-vf.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Archivo';
+  src: url('/fonts/archivo-vf-italic.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
 
 :root {
   /* ---------- Palette — noir, crème, un rouge ---------- */
@@ -34,7 +47,7 @@
 
   /* Encres secondaires (échelle texte) */
   --btm-graphite:   #3A3A36;   /* corps secondaire */
-  --btm-stone:      #6E6D66;   /* méta, mention légale */
+  --btm-stone:      #646359;   /* méta, mention légale — AA 5.2:1 sur crème */
 
   /* Hairline sur ink */
   --btm-rule-inv:   #2A2A26;
@@ -52,15 +65,20 @@
 
   --accent:        var(--btm-terracotta);
   --accent-press:  var(--btm-terracotta-2);
+  /* Accent éclairci pour texte sur fond noir — atteint le ratio AA 4.5:1
+     (terracotta #B14A2A ne fait que 3.57:1 sur l'encre). */
+  --accent-on-ink: #C9583B;
 
   --rule:          var(--btm-rule);
   --rule-strong:   var(--btm-ash);
   --rule-inverse:  var(--btm-rule-inv);
 
-  /* ---------- Typographie — deux familles seulement ---------- */
+  /* ---------- Typographie — une seule famille ---------- */
   --font-display:  'Archivo', 'Helvetica Neue', Arial, sans-serif;
-  --font-mono:     'IBM Plex Mono', ui-monospace, Menlo, monospace;
-  /* Note : pas de --font-sans. Le mono porte aussi le corps. */
+  /* Une seule famille. --font-mono est conservé comme ALIAS pour compatibilité
+     avec site.css — il pointe sur Archivo. La « voix atelier » des labels passe
+     par uppercase + tracking large + graisse 500, plus par le mono. */
+  --font-mono:     var(--font-display);
 
   /* Échelle (éditoriale, retenue) */
   --fs-mega:   clamp(72px, 10vw, 176px);
@@ -68,9 +86,9 @@
   --fs-h2:     clamp(32px, 4vw, 56px);
   --fs-h3:     28px;
   --fs-h4:     20px;
-  --fs-body:   14px;
-  --fs-small:  12px;
-  --fs-micro:  10px;
+  --fs-body:   16px;
+  --fs-small:  13px;
+  --fs-micro:  11px;
 
   --lh-tight:    0.85;
   --lh-display:  0.95;
@@ -128,6 +146,10 @@
   --dur-fast: 140ms;
   --dur-med:  260ms;
   --dur-slow: 480ms;
+
+  /* ---------- Motion — révélation scroll ---------- */
+  --reveal-distance: 24px;
+  --reveal-dur: 600ms;
 }
 
 /* =========================================================
@@ -211,7 +233,7 @@ html, body {
 .btm-lead {
   font-family: var(--font-mono);
   font-weight: 400;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.6;
   color: var(--fg-muted);
   max-width: 56ch;
