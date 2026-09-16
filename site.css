@@ -1524,19 +1524,9 @@ body.btm-edit-mode::before {
   #preopen-modal .modal-actions { flex-direction: column; }
 }
 
-/* ----- Bouton désactivé (pré-ouverture) --------------------- */
-.btn--disabled,
+/* ----- Bouton désactivé (envoi en cours) ------------------- */
 .btn[disabled] {
-  background: var(--btm-rule);
-  border-color: var(--btm-rule);
-  color: var(--btm-stone);
-  cursor: not-allowed;
-  opacity: 0.7;
+  opacity: 0.6;
+  cursor: progress;
   pointer-events: none;
-}
-.cta-band .btn--disabled,
-.cta-band .btn[disabled] {
-  background: rgba(244,238,221,0.3);
-  border-color: rgba(244,238,221,0.3);
-  color: rgba(244,238,221,0.5);
 }
