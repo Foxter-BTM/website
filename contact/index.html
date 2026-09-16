@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Contact &amp; Devis — BTM Carrosserie Bayonne | Pays Basque</title>
 <meta name="description" content="Contactez BTM Carrosserie — atelier indépendant, ouverture début 2027. Posez vos questions, laissez vos coordonnées pour être recontacté à l'ouverture. Secteur Bayonne, Biarritz, Anglet."/>
-<meta name="keywords" content="devis carrosserie Bayonne, rendez-vous carrosserie Biarritz, contact BTM Anglet, devis sinistre Pays Basque"/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://btm-carrosserie.fr/contact"/>
 
@@ -13,7 +12,7 @@
 <meta property="og:description" content="Contactez BTM Carrosserie — ouverture début 2027. Posez vos questions ou laissez vos coordonnées. Secteur Bayonne, Biarritz, Anglet."/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://btm-carrosserie.fr/contact"/>
-<meta property="og:image" content="https://btm-carrosserie.fr/images/og-btm.jpg"/>
+<meta property="og:image" content="https://btm-carrosserie.fr/images/og-btm.png"/>
 <meta property="og:locale" content="fr_FR"/>
 <meta property="og:site_name" content="BTM Carrosserie"/>
 
@@ -21,11 +20,12 @@
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Contact &amp; Devis — BTM Carrosserie | Bayonne, Biarritz, Anglet"/>
 <meta name="twitter:description" content="Contactez BTM Carrosserie — ouverture début 2027. Posez vos questions ou laissez vos coordonnées. Secteur Bayonne, Biarritz, Anglet."/>
-<meta name="twitter:image" content="https://btm-carrosserie.fr/images/og-btm.jpg"/>
+<meta name="twitter:image" content="https://btm-carrosserie.fr/images/og-btm.png"/>
 
 <!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
-<link rel="apple-touch-icon" href="/favicon.svg"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
 
 <script type="application/ld+json">
 {
@@ -34,13 +34,14 @@
   "name": "Contact BTM Carrosserie",
   "url": "https://btm-carrosserie.fr/contact",
   "mainEntity": {
-    "@type": "AutoRepair",
+    "@type": "AutoBodyShop",
     "name": "BTM Carrosserie",
     "email": "contact@btm-carrosserie.fr"
   }
 }
 </script>
 
+<link rel="preload" href="/fonts/archivo-vf.woff2" as="font" type="font/woff2" crossorigin/>
 <link rel="stylesheet" href="../tokens.css"/>
 <link rel="stylesheet" href="../site.css"/>
 </head>
@@ -61,7 +62,7 @@
         <li><a href="../contact/" class="is-active">Contact</a></li>
       </ul>
     </nav>
-    <a href="mailto:contact@btm-carrosserie.fr" class="cta">Nous écrire <span class="arrow">→</span></a>
+    <a href="#contact-form" class="cta">Être informé <span class="arrow">→</span></a>
     <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
       <span class="bars" aria-hidden="true"></span>
       <span>Menu</span>
@@ -82,9 +83,7 @@
       <span class="right">Réponse sous 24 h · du lundi au samedi</span>
     </div>
 
-    <div style="height: 48px;"></div>
-
-    <div class="eyebrow reveal"><span class="num">Réponse sous 24 à 48 h</span> Formulaire · email</div>
+    <div class="eyebrow reveal page-head__eyebrow"><span class="num">Réponse sous 24 à 48 h</span> Formulaire · email</div>
     <h1 class="reveal">Une question ?<br/>Écrivez-nous.</h1>
     <p class="lead reveal d1">
       Renseignez le formulaire avec quelques photos si possible — c'est ce qui nous aide le plus pour vous répondre précisément. La prise de devis ouvrira avec l'atelier, début 2027 ; en attendant, laissez-nous vos coordonnées pour une réponse et pour être recontacté en priorité à l'ouverture.
@@ -93,7 +92,7 @@
 </section>
 
 <!-- ============= FORM + INFO ============= -->
-<section style="border-bottom: 1px solid var(--btm-ink);">
+<section class="contact-section">
   <div class="wrap">
     <div class="contact-layout">
 
@@ -101,23 +100,26 @@
       <div class="form-side">
         <div class="meta-row reveal">
           <span><span class="num">01 /</span> Formulaire de contact</span>
-          <span class="right">Champs marqués <span style="color: var(--accent);">*</span> requis</span>
+          <span class="right">Champs marqués <span class="req-accent">*</span> requis</span>
         </div>
 
-        <div style="height: 48px;"></div>
-
-        <form id="contact-form" class="reveal d1" novalidate>
+        <form id="contact-form" class="reveal d1 form-side__head-gap" action="/api/contact" method="post" novalidate>
           <div class="form-grid">
+
+            <div class="hp" aria-hidden="true">
+              <label for="website">Site web</label>
+              <input type="text" id="website" name="website" tabindex="-1" autocomplete="off"/>
+            </div>
 
             <div class="field">
               <label for="nom">Nom <span class="req">*</span></label>
-              <input type="text" id="nom" name="nom" autocomplete="family-name" data-required required/>
+              <input type="text" id="nom" name="nom" autocomplete="family-name" maxlength="80" data-required required/>
               <span class="err">Veuillez renseigner votre nom</span>
             </div>
 
             <div class="field">
               <label for="prenom">Prénom <span class="req">*</span></label>
-              <input type="text" id="prenom" name="prenom" autocomplete="given-name" data-required required/>
+              <input type="text" id="prenom" name="prenom" autocomplete="given-name" maxlength="80" data-required required/>
               <span class="err">Veuillez renseigner votre prénom</span>
             </div>
 
@@ -129,8 +131,9 @@
 
             <div class="field">
               <label for="tel">Téléphone</label>
-              <input type="tel" id="tel" name="tel" autocomplete="tel" placeholder="+33 6 12 34 56 78"/>
+              <input type="tel" id="tel" name="tel" autocomplete="tel" maxlength="30" placeholder="+33 6 12 34 56 78"/>
               <span class="hint">Optionnel · accélère le rappel</span>
+              <span class="err">Numéro trop long</span>
             </div>
 
             <div class="field full">
@@ -142,7 +145,7 @@
                 <option value="debosselage">Débosselage</option>
                 <option value="pare-chocs">Pare-chocs et plastiques</option>
                 <option value="assureur">Dossier assureur</option>
-                <option value="ouverture">Être informé de l'ouverture</option>
+                <option value="ouverture" selected>Être informé de l'ouverture</option>
                 <option value="autre">Autre demande</option>
               </select>
               <span class="err">Sélectionnez une prestation</span>
@@ -150,30 +153,41 @@
 
             <div class="field">
               <label for="vehicule">Véhicule</label>
-              <input type="text" id="vehicule" name="vehicule" placeholder="Marque, modèle, année"/>
+              <input type="text" id="vehicule" name="vehicule" maxlength="120" placeholder="Marque, modèle, année"/>
+              <span class="err">Texte trop long (120 caractères max.)</span>
             </div>
 
             <div class="field">
               <label for="assureur">Assureur</label>
-              <input type="text" id="assureur" name="assureur" placeholder="MAIF, Groupama, AXA…"/>
+              <input type="text" id="assureur" name="assureur" maxlength="120" placeholder="MAIF, Groupama, AXA…"/>
+              <span class="err">Texte trop long (120 caractères max.)</span>
             </div>
 
             <div class="field full">
               <label for="message">Votre demande <span class="req">*</span></label>
-              <textarea id="message" name="message" rows="6" data-required required placeholder="Décrivez le besoin (choc, retouche, dossier en cours). Joignez des photos par email à contact@btm-carrosserie.fr après envoi du formulaire."></textarea>
+              <textarea id="message" name="message" rows="6" maxlength="3000" data-required required placeholder="Décrivez le besoin (choc, retouche, dossier en cours). Joignez des photos par email à contact@btm-carrosserie.fr après envoi du formulaire."></textarea>
               <span class="err">Veuillez décrire votre demande</span>
             </div>
 
             <div class="field full">
-              <label style="display: flex; align-items: flex-start; gap: 12px; color: var(--btm-graphite); text-transform: none; letter-spacing: 0; font-size: 12px; line-height: 1.6; cursor: pointer;">
-                <input type="checkbox" required style="width: auto; margin-top: 3px;"/>
-                <span>J'accepte que mes données soient traitées dans le cadre de ma prise de contact. Aucune information ne sera transmise à un tiers. Conformément au RGPD, je dispose d'un droit d'accès, de rectification et de suppression.</span>
+              <label class="consent-label">
+                <input type="checkbox" name="consent" required/>
+                <span>J'accepte que mes données soient traitées pour répondre à ma demande. Aucune information n'est transmise à un tiers. Vous disposez d'un droit d'accès, de rectification et de suppression — voir notre <a href="../mentions-legales/#rgpd" class="text-link">politique de confidentialité</a>.</span>
               </label>
+              <span class="err">Votre accord est nécessaire pour traiter la demande</span>
             </div>
 
-            <div class="full" style="display: flex; gap: 16px; flex-wrap: wrap; margin-top: 16px;">
+            <div class="field full">
+              <!-- TODO: remplacer la site key de test par la vraie (dashboard Cloudflare > Turnstile) -->
+              <div class="cf-turnstile" data-sitekey="1x00000000000000000000AA" data-language="fr" data-theme="light"></div>
+              <span class="err" id="turnstile-err">Vérification anti-robot échouée. Rechargez la page et réessayez.</span>
+            </div>
+
+            <div class="full form-actions">
               <button type="submit" class="btn">Envoyer mon message <span class="arrow">→</span></button>
               <button type="reset" class="btn btn--ghost">Effacer</button>
+              <p class="form-server-err" id="form-server-err" role="alert"></p>
+              <noscript><p class="form-noscript">L'envoi du formulaire nécessite JavaScript (vérification anti-robot). Sans JavaScript, écrivez-nous directement à <a href="mailto:contact@btm-carrosserie.fr" class="text-link">contact@btm-carrosserie.fr</a>.</p></noscript>
             </div>
 
           </div>
@@ -181,10 +195,10 @@
 
         <!-- Success state -->
         <div class="form-success" id="form-success" role="status" aria-live="polite">
-          <div class="eyebrow" style="color: var(--accent); margin-bottom: 16px;"><span class="num">01 /</span> Message envoyé</div>
+          <div class="eyebrow success-eyebrow"><span class="num">01 /</span> Message envoyé</div>
           <h3>Merci. Votre message est bien enregistré.</h3>
           <p>Grégoire vous répond sous 24 à 48 h, et nous vous tiendrons informé de l'ouverture. Vous pouvez compléter votre message en envoyant photos et documents à <a href="mailto:contact@btm-carrosserie.fr" class="text-link"><b>contact@btm-carrosserie.fr</b></a>.</p>
-          <div style="margin-top: 24px; display: flex; gap: 16px; flex-wrap: wrap;">
+          <div class="success-actions">
             <a href="../" class="btn">Retour à l'accueil <span class="arrow">→</span></a>
             <a href="../services/" class="btn btn--ghost">Voir les services</a>
           </div>
@@ -193,29 +207,27 @@
 
       <!-- ====== INFO ====== -->
       <aside class="info-side">
-        <div class="meta-row reveal" style="border-color: var(--btm-paper); color: var(--btm-bone);">
-          <span><span class="num" style="color: var(--accent);">02 /</span> Coordonnées atelier</span>
-          <span class="right" style="color: var(--btm-bone);">Anglet · Pays Basque</span>
+        <div class="meta-row reveal">
+          <span><span class="num">02 /</span> Coordonnées atelier</span>
+          <span class="right">Anglet · Pays Basque</span>
         </div>
 
-        <div style="height: 32px;"></div>
-
-        <div class="group reveal">
+        <div class="group reveal info-side__head-gap">
           <div class="label">Téléphone</div>
-          <p class="big" style="font-family: var(--font-display); font-weight: 700; font-size: 24px; letter-spacing: -0.01em; line-height: 1.1; color: var(--btm-paper);">+33 00 00 00 00 00</p>
-          <p style="margin-top: 8px; font-size: 12px;">Ligne active à l'ouverture de l'atelier, début 2027.</p>
+          <p class="big--phone">+33 00 00 00 00 00</p>
+          <p class="note">Ligne active à l'ouverture de l'atelier, début 2027.</p>
         </div>
 
         <div class="group reveal d1">
           <div class="label">Email</div>
           <a href="mailto:contact@btm-carrosserie.fr" class="big">contact@btm-carrosserie.fr</a>
-          <p style="margin-top: 8px; font-size: 12px;">Joignez photos et numéro de contrat pour accélérer le traitement.</p>
+          <p class="note">Joignez photos et numéro de contrat pour accélérer le traitement.</p>
         </div>
 
         <div class="group reveal d2">
           <div class="label">Adresse</div>
           <p>
-            <b style="color: var(--btm-paper);">BTM Carrosserie</b><br/>
+            <b>BTM Carrosserie</b><br/>
             Secteur Bayonne · Biarritz · Anglet<br/>
             Pays Basque<br/>
             Adresse communiquée à la signature du local.
@@ -224,7 +236,7 @@
 
         <div class="group reveal d3">
           <div class="label">Horaires</div>
-          <p style="font-size: 12px; color: var(--btm-stone); margin-bottom: 8px;">Horaires prévus à l'ouverture :</p>
+          <p class="hours-note">Horaires prévus à l'ouverture :</p>
           <div class="hours" role="list">
             <div class="row" role="listitem"><span class="day">Lundi</span><span class="h">08 h → 18 h</span></div>
             <div class="row" role="listitem"><span class="day">Mardi</span><span class="h">08 h → 18 h</span></div>
@@ -236,10 +248,10 @@
           </div>
         </div>
 
-        <div class="group reveal d4" style="border: 0;">
+        <div class="group reveal d4 group--flush">
           <div class="label">Délai de réponse</div>
-          <p style="font-family: var(--font-display); font-weight: 800; font-size: 32px; line-height: 1; letter-spacing: -0.015em; color: var(--btm-paper); margin-top: 4px;">Nous répondons sous 24 à 48 h.</p>
-          <p style="margin-top: 12px; font-size: 12px;">Messages traités du lundi au vendredi.</p>
+          <p class="big--delay">Nous répondons sous 24 à 48 h.</p>
+          <p class="note">Messages traités du lundi au vendredi.</p>
         </div>
       </aside>
 
@@ -272,19 +284,19 @@
 
     <div class="cols">
       <div class="col">
-        <h4>Atelier</h4>
+        <h3 class="col-head">Atelier</h3>
         <p>
           <b>BTM Carrosserie</b><br/>
           Secteur Bayonne · Biarritz · Anglet<br/>
           Pays Basque · France
         </p>
-        <p style="margin-top: 16px;">
+        <p class="col-stack">
           +33 00 00 00 00 00 (ligne active à l'ouverture)<br/>
           <a href="mailto:contact@btm-carrosserie.fr">contact@btm-carrosserie.fr</a>
         </p>
       </div>
       <div class="col">
-        <h4>Site</h4>
+        <h3 class="col-head">Site</h3>
         <ul>
           <li><a href="../">Accueil</a></li>
           <li><a href="../services/">Services</a></li>
@@ -294,7 +306,7 @@
         </ul>
       </div>
       <div class="col">
-        <h4>Services</h4>
+        <h3 class="col-head">Services</h3>
         <ul>
           <li><a href="../services/#sinistre">Réparation sinistre</a></li>
           <li><a href="../services/#peinture">Peinture auto</a></li>
@@ -304,7 +316,7 @@
         </ul>
       </div>
       <div class="col">
-        <h4>Zone</h4>
+        <h3 class="col-head">Zone</h3>
         <ul>
           <li>Bayonne</li>
           <li>Biarritz</li>
@@ -318,9 +330,10 @@
     <div class="bottom">
       <span>© 2026 BTM Carrosserie SARL — Tous droits réservés</span>
       <div class="legal">
-        <a href="#mentions">Mentions légales</a>
-        <a href="#cgu">CGU</a>
-        <a href="#cookies">Cookies</a>
+        <a href="../mentions-legales/">Mentions légales</a>
+        <a href="../mentions-legales/#rgpd">Confidentialité</a>
+        <a href="../mentions-legales/#cgu">CGU</a>
+        <a href="../mentions-legales/#cookies">Cookies</a>
       </div>
     </div>
   </div>
@@ -342,5 +355,9 @@
     </div>
   </div>
 </div>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" defer></script>
+<!-- TODO analytics: coller le token Cloudflare Web Analytics (dashboard > Analytics & Logs > Web Analytics) puis décommenter
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "TOKEN_ICI"}'></script>
+-->
 </body>
 </html>

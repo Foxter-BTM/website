@@ -4,8 +4,7 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>À propos — L'équipe BTM Carrosserie, Bayonne, Pays Basque</title>
-<meta name="description" content="BTM Carrosserie — atelier indépendant fondé par Grégoire Bodin (direction, relation assureurs) et Timothé Dauzat (carrossier de métier). Bayonne, Biarritz, Anglet. Ouverture 2027."/>
-<meta name="keywords" content="carrosserie indépendante Pays Basque, atelier carrosserie Bayonne équipe, BTM Carrosserie fondateurs"/>
+<meta name="description" content="BTM Carrosserie — atelier indépendant fondé par Grégoire Bodin (direction, relation assureurs) et un chef d'atelier carrossier de métier. Bayonne, Biarritz, Anglet. Ouverture 2027."/>
 <meta name="robots" content="index, follow"/>
 <link rel="canonical" href="https://btm-carrosserie.fr/a-propos"/>
 
@@ -13,7 +12,7 @@
 <meta property="og:description" content="Atelier indépendant fondé par un commercial et un carrossier de métier. Ouverture 2027."/>
 <meta property="og:type" content="website"/>
 <meta property="og:url" content="https://btm-carrosserie.fr/a-propos"/>
-<meta property="og:image" content="https://btm-carrosserie.fr/images/og-btm.jpg"/>
+<meta property="og:image" content="https://btm-carrosserie.fr/images/og-btm.png"/>
 <meta property="og:locale" content="fr_FR"/>
 <meta property="og:site_name" content="BTM Carrosserie"/>
 
@@ -21,11 +20,12 @@
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="À propos — L'équipe BTM Carrosserie | Pays Basque"/>
 <meta name="twitter:description" content="Atelier indépendant fondé par un commercial et un carrossier de métier. Ouverture 2027."/>
-<meta name="twitter:image" content="https://btm-carrosserie.fr/images/og-btm.jpg"/>
+<meta name="twitter:image" content="https://btm-carrosserie.fr/images/og-btm.png"/>
 
 <!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
-<link rel="apple-touch-icon" href="/favicon.svg"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
 
 <script type="application/ld+json">
 {
@@ -37,12 +37,13 @@
     "foundingDate": "2027",
     "founders": [
       { "@type": "Person", "name": "Grégoire Bodin", "jobTitle": "Directeur Général" },
-      { "@type": "Person", "name": "Timothé Dauzat", "jobTitle": "Chef d'atelier" }
+      { "@type": "Person", "jobTitle": "Chef d'atelier" }
     ]
   }
 }
 </script>
 
+<link rel="preload" href="/fonts/archivo-vf.woff2" as="font" type="font/woff2" crossorigin/>
 <link rel="stylesheet" href="../tokens.css"/>
 <link rel="stylesheet" href="../site.css"/>
 </head>
@@ -63,7 +64,7 @@
         <li><a href="../contact/">Contact</a></li>
       </ul>
     </nav>
-    <a href="../contact/" class="cta">Demander un devis <span class="arrow">→</span></a>
+    <a href="../contact/" class="cta">Être informé <span class="arrow">→</span></a>
     <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
       <span class="bars" aria-hidden="true"></span>
       <span>Menu</span>
@@ -84,12 +85,10 @@
       <span class="right">Fondation 2026 · Ouverture début 2027</span>
     </div>
 
-    <div style="height: 48px;"></div>
-
-    <div class="eyebrow reveal"><span class="num">Atelier indépendant</span> Carrosserie · Pays Basque · Deux associés</div>
+    <div class="eyebrow reveal page-head__eyebrow"><span class="num">Atelier indépendant</span> Carrosserie · Pays Basque · Deux associés</div>
     <h1 class="reveal">Un commercial<br/>et un carrossier.<br/>Pas une franchise.</h1>
     <p class="lead reveal d1">
-      BTM est né d'une conversation entre deux amis : Grégoire, passé par le courtage en assurance et diplômé d'un MBA en entrepreneuriat et gestion des PME, et Timothé, carrossier-peintre de métier, BTS Carrosserie. Le constat partagé : le client subit l'industrialisation du secteur, et l'artisanat technique disparaît. Nous ouvrons un atelier pour faire autrement.
+      BTM est né d'une conversation entre deux amis : Grégoire, passé par le courtage en assurance et diplômé d'un MBA en entrepreneuriat et gestion des PME, et un carrossier-peintre de métier, BTS Carrosserie. Le constat partagé : le client subit l'industrialisation du secteur, et l'artisanat technique disparaît. Nous ouvrons un atelier pour faire autrement.
     </p>
   </div>
 </section>
@@ -102,29 +101,24 @@
         <span><span class="num">01 /</span> Les fondateurs</span>
         <span class="right">Deux associés · deux fonctions distinctes</span>
       </div>
-      <h2 id="fondateurs-h" class="visually-hidden" style="position: absolute; left: -9999px;">Les fondateurs</h2>
+      <h2 id="fondateurs-h" class="visually-hidden">Les fondateurs</h2>
     </div>
 
     <div class="founders">
 
-      <!-- TIMOTHÉ -->
-      <article class="founder reveal" id="timothe">
+      <!-- CHEF D'ATELIER -->
+      <article class="founder reveal" id="chef-atelier">
         <div class="meta">
           <span><span class="role">01 / Atelier</span></span>
           <span>Carrossier-peintre · BTS Carrosserie</span>
         </div>
-        <div class="portrait" aria-label="Portrait de Timothé Dauzat, chef d'atelier BTM Carrosserie (placeholder)">
-          <!-- TODO: remplacer par photo portrait Timothé en atelier -->
-          <div class="label-img">
-            <b>IMAGE</b>
-            Portrait Timothé Dauzat<br/>
-            Atelier · lumière nord<br/>
-            mains et combinaison de travail
-          </div>
+        <div class="portrait portrait--mono" role="img" aria-label="Portrait du chef d'atelier BTM Carrosserie (placeholder)">
+          <!-- TODO: remplacer par photo portrait du chef d'atelier -->
+          <span class="mono-shape mono-shape--circle" aria-hidden="true"></span>
         </div>
-        <h2>Timothé Dauzat.<small>Chef d'atelier · technique · qualité</small></h2>
+        <h2>Le chef d'atelier.<small>Technique · qualité · méthodes</small></h2>
         <p>
-          Timothé est carrossier-peintre de métier, BTS Carrosserie. Il porte la qualité technique de chaque dossier BTM — choix de méthode, validation des pièces, contrôle final.
+          Carrossier-peintre de métier, BTS Carrosserie. Il porte la qualité technique de chaque dossier BTM — choix de méthode, validation des pièces, contrôle final.
         </p>
         <p>
           Ce qui l'intéresse : la voiture sortie droite, peinte propre, sans micro-défauts. Ce qu'il refuse : la cadence imposée qui force à laisser passer.
@@ -142,14 +136,10 @@
           <span><span class="role">02 / Direction</span></span>
           <span>MBA · courtage en assurance</span>
         </div>
-        <div class="portrait" aria-label="Portrait de Grégoire Bodin, directeur général BTM Carrosserie (placeholder)">
+        <div class="portrait portrait--mono" role="img" aria-label="Portrait de Grégoire Bodin, directeur général BTM Carrosserie (placeholder)">
           <!-- TODO: remplacer par photo portrait Grégoire en bureau d'atelier -->
-          <div class="label-img">
-            <b>IMAGE</b>
-            Portrait Grégoire Bodin<br/>
-            Bureau atelier · lumière nord<br/>
-            dossiers et téléphone
-          </div>
+          <span class="mono-shape mono-shape--block" aria-hidden="true"></span>
+          <span class="mono-initials" aria-hidden="true">GB</span>
         </div>
         <h2>Grégoire Bodin.<small>Directeur général · relation assureurs · client</small></h2>
         <p>
@@ -190,7 +180,7 @@
       <div class="value">
         <div class="num">02 /</div>
         <h3>Qualité technique.</h3>
-        <p>Un dossier passe par Timothé avant d'entrer en cabine. Pas de cadence imposée. Si la teinte ne sort pas bonne, on la refait. C'est non négociable, même quand c'est inconfortable côté planning.</p>
+        <p>Un dossier passe par le chef d'atelier avant d'entrer en cabine. Pas de cadence imposée. Si la teinte ne sort pas bonne, on la refait. C'est non négociable, même quand c'est inconfortable côté planning.</p>
       </div>
       <div class="value">
         <div class="num">03 /</div>
@@ -213,7 +203,7 @@
       <p class="lead">L'atelier est en cours d'implantation au Pays Basque, dans le secteur Bayonne · Biarritz · Anglet. Il réunira un espace de tôlerie, une cabine de peinture pressurisée, une zone de finition et un bureau d'accueil. La surface et l'adresse exactes seront communiquées à la signature du local.</p>
     </div>
 
-    <p class="btm-small reveal d1" style="margin-top: 24px; max-width: 64ch;">
+    <p class="btm-small reveal d1 note-block">
       Les photographies de l'atelier et les visites sur rendez-vous seront proposées à l'approche de l'ouverture.
     </p>
   </div>
@@ -229,15 +219,15 @@
       </div>
     </div>
 
-    <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 64px; align-items: start;" class="reveal">
-      <h2 id="engagement-h" style="font-size: clamp(40px, 5vw, 72px); line-height: 1; letter-spacing: -0.02em;">
+    <div class="engagement-grid reveal">
+      <h2 id="engagement-h" class="engagement-title">
         Parce qu'un atelier n'a pas besoin d'être grand<br/>
-        pour être <span style="color: var(--accent);">bien tenu.</span>
+        pour être <span class="terra">bien tenu.</span>
       </h2>
-      <div>
-        <p style="margin-bottom: 16px;">Dans le secteur, les ateliers font de plus en plus de volume, avec de moins en moins de techniciens. Le client devient un numéro de dossier, et le carrossier un opérateur de chaîne.</p>
-        <p style="margin-bottom: 16px;">Nous avons décidé de l'inverse : peu de dossiers en parallèle, mais chacun suivi par un binôme nommé. Cela ne fonctionne qu'à condition d'être deux à la tête de l'atelier — l'un dehors avec le client et l'assureur, l'autre dedans avec la voiture.</p>
-        <p style="color: var(--accent);">— Grégoire &amp; Timothé, mai 2026</p>
+      <div class="engagement-note">
+        <p>Dans le secteur, les ateliers font de plus en plus de volume, avec de moins en moins de techniciens. Le client devient un numéro de dossier, et le carrossier un opérateur de chaîne.</p>
+        <p>Nous avons décidé de l'inverse : peu de dossiers en parallèle, mais chacun suivi par un binôme nommé. Cela ne fonctionne qu'à condition d'être deux à la tête de l'atelier — l'un dehors avec le client et l'assureur, l'autre dedans avec la voiture.</p>
+        <p class="engagement-sign">— L'équipe BTM, mai 2026</p>
       </div>
     </div>
   </div>
@@ -251,17 +241,14 @@
       <span class="right">Réponse sous 24 à 48 h</span>
     </div>
 
-    <div style="height: 48px;"></div>
-
-    <div style="display: grid; grid-template-columns: 1.4fr 1fr; gap: 64px; align-items: end;">
+    <div class="cta-grid">
       <div class="reveal">
         <h2>Passez nous voir.<br/>Café compris.</h2>
       </div>
       <div class="reveal d1">
         <p class="lead">Les visites de l'atelier seront possibles sur rendez-vous à l'approche de l'ouverture. En attendant, écrivez-nous — nous répondons en personne, pas par formulaire automatique.</p>
         <div class="actions">
-          <a href="../contact/" class="btn">Nous écrire <span class="arrow">→</span></a>
-          <a href="../contact/" class="btn btn--ghost">Poser une question <span class="arrow">→</span></a>
+          <a href="../contact/" class="btn">Être informé de l'ouverture <span class="arrow">→</span></a>
         </div>
       </div>
     </div>
@@ -279,19 +266,19 @@
 
     <div class="cols">
       <div class="col">
-        <h4>Atelier</h4>
+        <h3 class="col-head">Atelier</h3>
         <p>
           <b>BTM Carrosserie</b><br/>
           Secteur Bayonne · Biarritz · Anglet<br/>
           Pays Basque · France
         </p>
-        <p style="margin-top: 16px;">
+        <p class="col-stack">
           +33 00 00 00 00 00 (ligne active à l'ouverture)<br/>
           <a href="mailto:contact@btm-carrosserie.fr">contact@btm-carrosserie.fr</a>
         </p>
       </div>
       <div class="col">
-        <h4>Site</h4>
+        <h3 class="col-head">Site</h3>
         <ul>
           <li><a href="../">Accueil</a></li>
           <li><a href="../services/">Services</a></li>
@@ -301,7 +288,7 @@
         </ul>
       </div>
       <div class="col">
-        <h4>Services</h4>
+        <h3 class="col-head">Services</h3>
         <ul>
           <li><a href="../services/#sinistre">Réparation sinistre</a></li>
           <li><a href="../services/#peinture">Peinture auto</a></li>
@@ -311,7 +298,7 @@
         </ul>
       </div>
       <div class="col">
-        <h4>Zone</h4>
+        <h3 class="col-head">Zone</h3>
         <ul>
           <li>Bayonne</li>
           <li>Biarritz</li>
@@ -325,9 +312,10 @@
     <div class="bottom">
       <span>© 2026 BTM Carrosserie SARL — Tous droits réservés</span>
       <div class="legal">
-        <a href="#mentions">Mentions légales</a>
-        <a href="#cgu">CGU</a>
-        <a href="#cookies">Cookies</a>
+        <a href="../mentions-legales/">Mentions légales</a>
+        <a href="../mentions-legales/#rgpd">Confidentialité</a>
+        <a href="../mentions-legales/#cgu">CGU</a>
+        <a href="../mentions-legales/#cookies">Cookies</a>
       </div>
     </div>
   </div>
@@ -349,5 +337,8 @@
     </div>
   </div>
 </div>
+<!-- TODO analytics: coller le token Cloudflare Web Analytics (dashboard > Analytics & Logs > Web Analytics) puis décommenter
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "TOKEN_ICI"}'></script>
+-->
 </body>
 </html>
