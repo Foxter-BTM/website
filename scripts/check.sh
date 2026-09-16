@@ -7,7 +7,7 @@ say() { printf '  \033[31mFAIL\033[0m %s\n' "$1"; fail=1; }
 ok()  { printf '  \033[32mok\033[0m   %s\n' "$1"; }
 
 # Fichiers HTML déployés (hors sources exclues)
-HTML=$(find . -name '*.html' -not -path './node_modules/*' -not -path './docs/*' -not -path './scripts/*' -not -path './images/og-src.html' -not -path './.wrangler/*')
+HTML=$(find . -name '*.html' -not -path './node_modules/*' -not -path './docs/*' -not -path './scripts/*' -not -path './worker/*' -not -path './images/og-src.html' -not -path './.wrangler/*')
 
 echo "1. Nom du chef d'atelier absent"
 if grep -ril "timoth\|dauzat" $HTML site.js site.css sitemap.xml robots.txt 2>/dev/null | grep -q .; then

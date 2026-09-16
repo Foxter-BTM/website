@@ -1,10 +1,17 @@
 {
   "name": "btm-carrosserie",
   "version": "1.0.0",
+  "type": "module",
   "scripts": {
-    "start": "serve . -p $PORT"
+    "start": "serve . -p $PORT",
+    "test": "node --test worker/*.test.js",
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
   },
   "dependencies": {
     "serve": "^14.2.4"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
   }
 }
