@@ -936,7 +936,7 @@ footer.site-foot .bottom .legal {
   position: absolute; z-index: 1;
   background: var(--accent);
 }
-/* Timothé — cercle (atelier, peinture) */
+/* Chef d'atelier — cercle (atelier, peinture) */
 .mono-shape--circle {
   width: 46%; aspect-ratio: 1; border-radius: 50%;
   top: -8%; right: -10%;
