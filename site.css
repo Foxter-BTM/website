@@ -194,7 +194,7 @@ section.band.on-ink p { color: var(--btm-bone); }
   letter-spacing: var(--trk-wide); color: var(--accent);
   margin-bottom: var(--s-3);
 }
-.hero .pillar h3 {
+.hero .pillar h2 {
   font-family: var(--font-display); font-weight: 700; font-size: 20px;
   line-height: 1.2; margin-bottom: var(--s-3);
 }
