@@ -10,3 +10,8 @@ CLAUDE.md
 .assetsignore
 wrangler.toml
 images/og-src.html
+docs/
+scripts/
+worker/
+README-deploy.md
+BTM-Carrosserie-Contenu-Site-corrige.md
