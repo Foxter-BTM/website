@@ -1541,3 +1541,7 @@ body.btm-edit-mode::before {
 .legal-page ul { padding-left: 1.2em; margin: 0 0 var(--s-3); }
 .legal-page li { margin-bottom: 6px; }
 .legal-page .todo { color: var(--btm-stone); }
+
+/* ----- Page 404 --------------------------------------------- */
+.err-page { min-height: 60vh; display: flex; align-items: center; }
+.err-page .actions { display: flex; gap: var(--s-3); flex-wrap: wrap; margin-top: var(--s-5); }
