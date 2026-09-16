@@ -36,14 +36,19 @@ async function handleContact(request, env, ctx) {
   if (!ct.includes('application/x-www-form-urlencoded') && !ct.includes('multipart/form-data')) {
     return reply(415, { ok: false, errors: { _: 'Format de requête non pris en charge' } });
   }
-  const form = await request.formData();
+  let form;
+  try {
+    form = await request.formData();
+  } catch {
+    return reply(400, { ok: false, errors: { _: 'Formulaire illisible. Rechargez la page et réessayez.' } });
+  }
   const fields = Object.fromEntries([...form.entries()].map(([k, v]) => [k, typeof v === 'string' ? v : '']));
 
   // Honeypot : un robot remplit le champ caché → on répond OK sans rien envoyer.
   if (fields.website) return reply(200, { ok: true });
 
   const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
-  if (await isRateLimited(ip, ctx)) {
+  if (await isRateLimited(ip, ctx, new URL(request.url).origin)) {
     return reply(429, { ok: false, errors: { _: 'Trop de tentatives. Réessayez dans quelques minutes.' } });
   }
 
@@ -60,10 +65,10 @@ async function handleContact(request, env, ctx) {
 }
 
 // Compteur par IP dans le cache edge (best effort : jamais bloquant en cas d'erreur).
-async function isRateLimited(ip, ctx) {
+async function isRateLimited(ip, ctx, origin) {
   try {
     const cache = caches.default;
-    const key = new Request(`https://rate.btm-carrosserie.internal/${encodeURIComponent(ip)}`);
+    const key = new Request(`${origin}/__rate/${encodeURIComponent(ip)}`);
     const hit = await cache.match(key);
     const count = hit ? parseInt(await hit.text(), 10) || 0 : 0;
     if (count >= RATE_LIMIT) return true;
@@ -86,6 +91,8 @@ async function verifyTurnstile(token, ip, secret) {
   }
 }
 
+const oneLine = (s) => s.replace(/[\r\n]+/g, ' ');
+
 async function sendEmail(d, apiKey) {
   if (!apiKey) return false;
   const lines = [
@@ -107,7 +114,7 @@ async function sendEmail(d, apiKey) {
         from: FROM,
         to: [TO],
         reply_to: d.email,
-        subject: `[Site] ${LABELS[d.prestation] || d.prestation} — ${d.prenom} ${d.nom}`,
+        subject: `[Site] ${LABELS[d.prestation] || d.prestation} — ${oneLine(d.prenom)} ${oneLine(d.nom)}`,
         text: lines.join('\n'),
       }),
     });
