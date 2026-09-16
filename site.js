@@ -65,12 +65,13 @@
     form.addEventListener('submit', async (ev) => {
       ev.preventDefault();
       if (serverErr) { serverErr.textContent = ''; serverErr.classList.remove('shown'); }
+      document.querySelector('#turnstile-err')?.closest('.field')?.classList.remove('has-err');
 
       let ok = true;
       form.querySelectorAll('[data-required]').forEach((field) => {
         const val = (field.value || '').trim();
         const isEmail = field.type === 'email';
-        const valid = val.length > 0 && (!isEmail || /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(val));
+        const valid = val.length > 0 && (!isEmail || /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(val)) && (field.tagName !== 'TEXTAREA' || val.length >= 10);
         setFieldError(field.name, !valid);
         if (!valid) ok = false;
       });
@@ -112,6 +113,12 @@
         submitBtn.disabled = false;
         submitBtn.innerHTML = label;
       }
+    });
+
+    form.addEventListener('reset', () => {
+      form.querySelectorAll('.has-err').forEach((w) => w.classList.remove('has-err'));
+      form.querySelectorAll('.invalid').forEach((f) => f.classList.remove('invalid'));
+      if (serverErr) { serverErr.textContent = ''; serverErr.classList.remove('shown'); }
     });
 
     // Clear error on input

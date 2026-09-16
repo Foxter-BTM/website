@@ -113,13 +113,13 @@
 
             <div class="field">
               <label for="nom">Nom <span class="req">*</span></label>
-              <input type="text" id="nom" name="nom" autocomplete="family-name" data-required required/>
+              <input type="text" id="nom" name="nom" autocomplete="family-name" maxlength="80" data-required required/>
               <span class="err">Veuillez renseigner votre nom</span>
             </div>
 
             <div class="field">
               <label for="prenom">Prénom <span class="req">*</span></label>
-              <input type="text" id="prenom" name="prenom" autocomplete="given-name" data-required required/>
+              <input type="text" id="prenom" name="prenom" autocomplete="given-name" maxlength="80" data-required required/>
               <span class="err">Veuillez renseigner votre prénom</span>
             </div>
 
@@ -131,7 +131,7 @@
 
             <div class="field">
               <label for="tel">Téléphone</label>
-              <input type="tel" id="tel" name="tel" autocomplete="tel" placeholder="+33 6 12 34 56 78"/>
+              <input type="tel" id="tel" name="tel" autocomplete="tel" maxlength="30" placeholder="+33 6 12 34 56 78"/>
               <span class="hint">Optionnel · accélère le rappel</span>
             </div>
 
@@ -152,17 +152,17 @@
 
             <div class="field">
               <label for="vehicule">Véhicule</label>
-              <input type="text" id="vehicule" name="vehicule" placeholder="Marque, modèle, année"/>
+              <input type="text" id="vehicule" name="vehicule" maxlength="120" placeholder="Marque, modèle, année"/>
             </div>
 
             <div class="field">
               <label for="assureur">Assureur</label>
-              <input type="text" id="assureur" name="assureur" placeholder="MAIF, Groupama, AXA…"/>
+              <input type="text" id="assureur" name="assureur" maxlength="120" placeholder="MAIF, Groupama, AXA…"/>
             </div>
 
             <div class="field full">
               <label for="message">Votre demande <span class="req">*</span></label>
-              <textarea id="message" name="message" rows="6" data-required required placeholder="Décrivez le besoin (choc, retouche, dossier en cours). Joignez des photos par email à contact@btm-carrosserie.fr après envoi du formulaire."></textarea>
+              <textarea id="message" name="message" rows="6" maxlength="3000" data-required required placeholder="Décrivez le besoin (choc, retouche, dossier en cours). Joignez des photos par email à contact@btm-carrosserie.fr après envoi du formulaire."></textarea>
               <span class="err">Veuillez décrire votre demande</span>
             </div>
 

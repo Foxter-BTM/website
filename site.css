@@ -1548,7 +1548,7 @@ body.btm-edit-mode::before {
 
 /* ----- Formulaire : honeypot, erreurs serveur, succès sans JS ----- */
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
-.form-server-err { display: none; color: var(--accent); margin: var(--s-3) 0 0; }
+.form-server-err { display: none; color: var(--accent); margin: var(--s-3) 0 0; flex-basis: 100%; }
 .form-server-err.shown { display: block; }
 .form-success:target { display: block; }
 .cf-turnstile { margin-top: var(--s-2); }
