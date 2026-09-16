@@ -133,6 +133,7 @@
               <label for="tel">Téléphone</label>
               <input type="tel" id="tel" name="tel" autocomplete="tel" maxlength="30" placeholder="+33 6 12 34 56 78"/>
               <span class="hint">Optionnel · accélère le rappel</span>
+              <span class="err">Numéro trop long</span>
             </div>
 
             <div class="field full">
@@ -153,11 +154,13 @@
             <div class="field">
               <label for="vehicule">Véhicule</label>
               <input type="text" id="vehicule" name="vehicule" maxlength="120" placeholder="Marque, modèle, année"/>
+              <span class="err">Texte trop long (120 caractères max.)</span>
             </div>
 
             <div class="field">
               <label for="assureur">Assureur</label>
               <input type="text" id="assureur" name="assureur" maxlength="120" placeholder="MAIF, Groupama, AXA…"/>
+              <span class="err">Texte trop long (120 caractères max.)</span>
             </div>
 
             <div class="field full">
@@ -184,6 +187,7 @@
               <button type="submit" class="btn">Envoyer mon message <span class="arrow">→</span></button>
               <button type="reset" class="btn btn--ghost">Effacer</button>
               <p class="form-server-err" id="form-server-err" role="alert"></p>
+              <noscript><p class="form-noscript">L'envoi du formulaire nécessite JavaScript (vérification anti-robot). Sans JavaScript, écrivez-nous directement à <a href="mailto:contact@btm-carrosserie.fr" class="text-link">contact@btm-carrosserie.fr</a>.</p></noscript>
             </div>
 
           </div>

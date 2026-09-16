@@ -36,6 +36,8 @@ async function handleContact(request, env, ctx) {
   if (!ct.includes('application/x-www-form-urlencoded') && !ct.includes('multipart/form-data')) {
     return reply(415, { ok: false, errors: { _: 'Format de requête non pris en charge' } });
   }
+  const length = Number(request.headers.get('Content-Length') || 0);
+  if (length > 65536) return reply(413, { ok: false, errors: { _: 'Message trop volumineux.' } });
   let form;
   try {
     form = await request.formData();

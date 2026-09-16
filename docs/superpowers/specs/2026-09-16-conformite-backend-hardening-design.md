@@ -140,9 +140,11 @@ Fichiers : `index.html`, `services/index.html`, `assureurs/index.html`,
   bouton en état `disabled` + « Envoi… » ; succès → `#form-success` ; 400 →
   mapping `errors` sur `.field` ; réseau/5xx → message générique + lien
   `mailto:contact@btm-carrosserie.fr` pré-rempli.
-- Sans JS : le `<form>` poste nativement ; le Worker renvoie une redirection
-  303 vers `/contact/?envoye=1` si `Accept` ne contient pas `application/json`,
-  et `site.js`/HTML affiche le succès sur ce paramètre.
+- Sans JS : Turnstile ne rend pas son widget, l'envoi n'aboutit donc pas. Un
+  `<noscript>` dans le formulaire explique la situation et renvoie vers
+  l'email. Le Worker conserve la redirection 303
+  (`/contact/?envoye=1#form-success` / `/contact/?erreur=1#contact-form`) pour
+  tout client qui poste sans `Accept: application/json`.
 
 ## 5. HTTPS et en-têtes
 
