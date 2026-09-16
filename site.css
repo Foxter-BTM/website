@@ -1545,3 +1545,10 @@ body.btm-edit-mode::before {
 /* ----- Page 404 --------------------------------------------- */
 .err-page { min-height: 60vh; display: flex; align-items: center; }
 .err-page .actions { display: flex; gap: var(--s-3); flex-wrap: wrap; margin-top: var(--s-5); }
+
+/* ----- Formulaire : honeypot, erreurs serveur, succès sans JS ----- */
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.form-server-err { display: none; color: var(--accent); margin: var(--s-3) 0 0; }
+.form-server-err.shown { display: block; }
+.form-success:target { display: block; }
+.cf-turnstile { margin-top: var(--s-2); }

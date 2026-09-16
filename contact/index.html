@@ -62,7 +62,7 @@
         <li><a href="../contact/" class="is-active">Contact</a></li>
       </ul>
     </nav>
-    <a href="../contact/" class="cta">Être informé <span class="arrow">→</span></a>
+    <a href="#contact-form" class="cta">Être informé <span class="arrow">→</span></a>
     <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">
       <span class="bars" aria-hidden="true"></span>
       <span>Menu</span>
@@ -103,8 +103,13 @@
           <span class="right">Champs marqués <span class="req-accent">*</span> requis</span>
         </div>
 
-        <form id="contact-form" class="reveal d1 form-side__head-gap" novalidate>
+        <form id="contact-form" class="reveal d1 form-side__head-gap" action="/api/contact" method="post" novalidate>
           <div class="form-grid">
+
+            <div class="hp" aria-hidden="true">
+              <label for="website">Site web</label>
+              <input type="text" id="website" name="website" tabindex="-1" autocomplete="off"/>
+            </div>
 
             <div class="field">
               <label for="nom">Nom <span class="req">*</span></label>
@@ -166,11 +171,19 @@
                 <input type="checkbox" name="consent" required/>
                 <span>J'accepte que mes données soient traitées pour répondre à ma demande. Aucune information n'est transmise à un tiers. Vous disposez d'un droit d'accès, de rectification et de suppression — voir notre <a href="../mentions-legales/#rgpd" class="text-link">politique de confidentialité</a>.</span>
               </label>
+              <span class="err">Votre accord est nécessaire pour traiter la demande</span>
+            </div>
+
+            <div class="field full">
+              <!-- TODO: remplacer la site key de test par la vraie (dashboard Cloudflare > Turnstile) -->
+              <div class="cf-turnstile" data-sitekey="1x00000000000000000000AA" data-language="fr" data-theme="light"></div>
+              <span class="err" id="turnstile-err">Vérification anti-robot échouée. Rechargez la page et réessayez.</span>
             </div>
 
             <div class="full form-actions">
               <button type="submit" class="btn">Envoyer mon message <span class="arrow">→</span></button>
               <button type="reset" class="btn btn--ghost">Effacer</button>
+              <p class="form-server-err" id="form-server-err" role="alert"></p>
             </div>
 
           </div>
@@ -338,6 +351,7 @@
     </div>
   </div>
 </div>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" defer></script>
 <!-- TODO analytics: coller le token Cloudflare Web Analytics (dashboard > Analytics & Logs > Web Analytics) puis décommenter
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "TOKEN_ICI"}'></script>
 -->
